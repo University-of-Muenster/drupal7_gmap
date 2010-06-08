@@ -274,6 +274,9 @@ function _gmap_admin_settings() {
   if (!isset($opts['markermanager']) || !is_array($opts['markermanager'])) {
     $opts['markermanager'] = array();
   }
+  if (!isset($opts['markerclusterer']) || !is_array($opts['markerclusterer'])) {
+    $opts['markerclusterer'] = array();
+  }
   if (!isset($opts['clusterer']) || !is_array($opts['clusterer'])) {
     $opts['clusterer'] = array();
   }
@@ -301,6 +304,13 @@ function _gmap_admin_settings() {
     'markerMinZoom' => 4,
     'markerMaxZoom' => 0,
   ), $opts['markermanager']);
+  
+  $opts['markerclusterer'] = array_merge(array(
+    'filename' => 'markerclusterer_packed.js',
+    'gridSize' => 60,
+    'maxZoom' => 17,
+    // @@@ Some way of representing MarkerStyleOptions?
+  ), $opts['markerclusterer']);
 
   $opts['clusterer'] = array_merge(array(
     'filename' => 'Clusterer2.js',
@@ -333,7 +343,8 @@ function _gmap_admin_settings() {
     '#options' => array(
       'gmap' => t('No manager (use GMap API directly)'),
       'gmarkermanager' => t("Google's GMarkerManager"),
-      'markermanager' => t('Gmaps Utility Library MarkerManager'),
+      'markermanager' => t('GMaps Utility Library MarkerManager'),
+      'markerclusterer' => t('GMaps Utility Library MarkerClusterer'),
       'clusterer' => t("Jef Poskanzer's Clusterer"),
       'clustermarker' => t("Martin Pearman's ClusterMarker"),
     ),
@@ -401,7 +412,7 @@ function _gmap_admin_settings() {
     '#parents' => array('gmap_markermanager', 'gmarkermanager', 'markerMaxZoom'),
   );
 
-  // Gmaps Utility Library -- MarkerManager
+  // GMaps Utility Library -- MarkerManager
   $form['gmap_markermanager']['markermanager'] = array(
     '#type' => 'fieldset',
     '#title' => t('MarkerManager settings'),
@@ -457,6 +468,36 @@ function _gmap_admin_settings() {
     '#description' => t('At the specified zoom level and above (i.e. zooming in,) the marker will be hidden. Choose 0 to disable by default.'),
     '#default_value' => $opts['markermanager']['markerMaxZoom'],
     '#parents' => array('gmap_markermanager', 'markermanager', 'markerMaxZoom'),
+  );
+
+  // GMaps Utility Library -- MarkerClusterer
+  $form['gmap_markermanager']['markerclusterer'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('MarkerClusterer settings'),
+    '#description' => t('MarkerClusterer creates and manages per-zoom-level clusters for large amounts of markers (hundreds or thousands.) To use, you must download it from <a href="@url">here</a> and place it in the <em>thirdparty</em> folder.', array('@url' => 'http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/1.0/src/')),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['gmap_markermanager']['markerclusterer']['filename'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Filename'),
+    '#description' => t('Name of downloaded file in the thirdparty folder. Default: %default', array('%default' => 'markerclusterer_packed.js')),
+    '#default_value' => $opts['markerclusterer']['filename'],
+  );
+  $form['gmap_markermanager']['markerclusterer']['gridSize'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Grid Size'),
+    '#description' => t('The grid size of a cluster in pixels. Each cluster will be a square. If you want the algorithm to run faster, you can set this value larger.'),
+    '#size' => 4,
+    '#maxlength' => 4,
+    '#default_value' => $opts['markerclusterer']['gridSize'],
+  );
+  $form['gmap_markermanager']['markerclusterer']['maxZoom'] = array(
+    '#type' => 'select',
+    '#title' => t('Maximum zoom'),
+    '#options' => drupal_map_assoc(range(0, 17)),
+    '#description' => t('At this zoom and above, all markers will be shown without clustering.'),
+    '#default_value' => $opts['markerclusterer']['maxZoom'],
   );
 
   // Jef Poskanzer's Clusterer
