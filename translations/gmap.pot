@@ -1,0 +1,1307 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  gmap.php,v 1.1.2.4 2010/01/09 22:08:39 bdragon
+#  gmap.module,v 1.51.2.187 2010/06/08 17:42:13 bdragon
+#  gmap.strings.php,v 1.1.4.2 2010/06/13 08:57:22 rooby
+#  gmap.strings.inc,v 1.1.4.2 2010/06/13 08:57:22 rooby
+#  gmap_settings_ui.inc,v 1.1.2.45 2010/06/08 20:49:31 bdragon
+#  gmap_location.module,v 1.26.2.92 2009/03/13 17:18:41 bdragon
+#  gmap.info,v 1.1.2.3 2007/06/18 23:06:44 dww
+#  gmap_location.info,v 1.1.2.3 2007/06/18 23:06:44 dww
+#  gmap_macro_builder.info,v 1.1.2.2 2007/06/18 23:06:44 dww
+#  gmap_taxonomy.info,v 1.1.2.1 2007/12/29 05:33:06 bdragon
+#  gmap_views.info,v 1.1.2.2 2007/06/18 23:06:44 dww
+#  gmap_views.module,v 1.1.2.28 2008/12/05 17:33:20 bdragon
+#  gmap_macro_builder.module,v 1.1.2.14 2010/06/08 17:42:13 bdragon
+#  gmap_taxonomy.module,v 1.1.2.7 2009/02/04 20:47:16 bdragon
+#  gmap.install,v 1.1.2.8 2010/01/10 02:06:51 bdragon
+#  gmap_location.install,v 1.1.2.10 2009/03/13 17:18:41 bdragon
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2010-07-06 23:38+1000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: gmap.php:62 gmap.module:169
+msgid "Disable mousezoom"
+msgstr ""
+
+#: gmap.php:64 gmap.module:171
+msgid "Disable using the scroll wheel to zoom the map."
+msgstr ""
+
+#: gmap.strings.php:65
+msgid "File gmap_strings.inc successfully created."
+msgstr ""
+
+#: gmap.strings.inc:6
+msgid "Small Red"
+msgstr ""
+
+#: gmap.strings.inc:7
+msgid "Small Bright red"
+msgstr ""
+
+#: gmap.strings.inc:8
+msgid "Small Orange"
+msgstr ""
+
+#: gmap.strings.inc:9
+msgid "Small Pale Yellow"
+msgstr ""
+
+#: gmap.strings.inc:10
+msgid "Small Yellow"
+msgstr ""
+
+#: gmap.strings.inc:11
+msgid "Small Pale Green"
+msgstr ""
+
+#: gmap.strings.inc:12
+msgid "Small Green"
+msgstr ""
+
+#: gmap.strings.inc:13
+msgid "Small Dark Green"
+msgstr ""
+
+#: gmap.strings.inc:14
+msgid "Small Flouro Green"
+msgstr ""
+
+#: gmap.strings.inc:15
+msgid "Small Pale Blue"
+msgstr ""
+
+#: gmap.strings.inc:16
+msgid "Small Light Blue"
+msgstr ""
+
+#: gmap.strings.inc:17
+msgid "Small Blue"
+msgstr ""
+
+#: gmap.strings.inc:18
+msgid "Small Dark Blue"
+msgstr ""
+
+#: gmap.strings.inc:19
+msgid "Small Purple"
+msgstr ""
+
+#: gmap.strings.inc:20
+msgid "Small Pink"
+msgstr ""
+
+#: gmap.strings.inc:21
+msgid "Small Bright Pink"
+msgstr ""
+
+#: gmap.strings.inc:22
+msgid "Small Brown"
+msgstr ""
+
+#: gmap.strings.inc:23
+msgid "Small White"
+msgstr ""
+
+#: gmap.strings.inc:24
+msgid "Small Light Gray"
+msgstr ""
+
+#: gmap.strings.inc:25
+msgid "Small Gray"
+msgstr ""
+
+#: gmap.strings.inc:26
+msgid "Small Black"
+msgstr ""
+
+#: gmap.strings.inc:27
+msgid "Small Blue (Alternate)"
+msgstr ""
+
+#: gmap.strings.inc:28
+msgid "Small Red (Alternate)"
+msgstr ""
+
+#: gmap.strings.inc:29
+msgid "Big Blue"
+msgstr ""
+
+#: gmap.strings.inc:30
+msgid "Big Red"
+msgstr ""
+
+#: gmap.strings.inc:31
+msgid "X marks the spot"
+msgstr ""
+
+#: gmap.strings.inc:32
+msgid "Sunday"
+msgstr ""
+
+#: gmap.strings.inc:33
+msgid "Monday"
+msgstr ""
+
+#: gmap.strings.inc:34
+msgid "Tuesday"
+msgstr ""
+
+#: gmap.strings.inc:35
+msgid "Wednesday"
+msgstr ""
+
+#: gmap.strings.inc:36
+msgid "Thursday"
+msgstr ""
+
+#: gmap.strings.inc:37
+msgid "Friday"
+msgstr ""
+
+#: gmap.strings.inc:38
+msgid "Saturday"
+msgstr ""
+
+#: gmap.strings.inc:39
+msgid "Week"
+msgstr ""
+
+#: gmap.strings.inc:40
+msgid "Blank"
+msgstr ""
+
+#: gmap.strings.inc:41
+msgid "Cluster"
+msgstr ""
+
+#: gmap.strings.inc:42
+msgid "Drupal"
+msgstr ""
+
+#: gmap.strings.inc:43
+msgid "Line Vertex"
+msgstr ""
+
+#: gmap.strings.inc:44
+msgid "Letters"
+msgstr ""
+
+#: gmap.strings.inc:45
+msgid "Blue"
+msgstr ""
+
+#: gmap.strings.inc:46
+msgid "Gray"
+msgstr ""
+
+#: gmap.strings.inc:47
+msgid "Green"
+msgstr ""
+
+#: gmap.strings.inc:48
+msgid "Light Blue"
+msgstr ""
+
+#: gmap.strings.inc:49
+msgid "Orange"
+msgstr ""
+
+#: gmap.strings.inc:50
+msgid "Pink"
+msgstr ""
+
+#: gmap.strings.inc:51
+msgid "Purple"
+msgstr ""
+
+#: gmap.strings.inc:52
+msgid "White"
+msgstr ""
+
+#: gmap.strings.inc:53
+msgid "Yellow"
+msgstr ""
+
+#: gmap.strings.inc:54
+msgid "Numbers"
+msgstr ""
+
+#: gmap.strings.inc:55
+msgid "Route"
+msgstr ""
+
+#: gmap_settings_ui.inc:18
+msgid "Google Map Initialize"
+msgstr ""
+
+#: gmap_settings_ui.inc:32;37 gmap.module:1152;1173
+msgid "Google Maps API Key"
+msgstr ""
+
+#: gmap_settings_ui.inc:33
+msgid "Managed by <a href=\"@url\">Keys</a>."
+msgstr ""
+
+#: gmap_settings_ui.inc:38
+msgid "Your personal Googlemaps API key.  You must get this for each separate website at <a href=\"http://www.google.com/apis/maps/\">Google Map API website</a>."
+msgstr ""
+
+#: gmap_settings_ui.inc:43
+msgid "Path to gmap_markers.js"
+msgstr ""
+
+#: gmap_settings_ui.inc:44
+msgid "You are using the <em>Private</em> download method. For markers to work properly. you must press the <em>Regenerate</em> button, manually copy js/gmap_markers.js from the files directory to a location accessible by the webserver, and enter the file path relative to the Drupal root (including the filename) in this field. Example: <em>sites/default/misc/gmap_markers.js</em>"
+msgstr ""
+
+#: gmap_settings_ui.inc:51
+msgid "Regenerate marker cache"
+msgstr ""
+
+#: gmap_settings_ui.inc:52
+msgid "If you are having problems with markers, or have modified the .ini files in the markers folder, click here to rebuild the marker cache file."
+msgstr ""
+
+#: gmap_settings_ui.inc:57;620
+msgid "Regenerate"
+msgstr ""
+
+#: gmap_settings_ui.inc:64
+msgid "Default map settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:90
+msgid "Default width"
+msgstr ""
+
+#: gmap_settings_ui.inc:94
+msgid "The default width of a Google map, as a CSS length or percentage. Examples: <em>50px</em>, <em>5em</em>, <em>2.5in</em>, <em>95%</em>"
+msgstr ""
+
+#: gmap_settings_ui.inc:99
+msgid "Default height"
+msgstr ""
+
+#: gmap_settings_ui.inc:103
+msgid "The default height of a Google map, as a CSS length or percentage. Examples: <em>50px</em>, <em>5em</em>, <em>2.5in</em>, <em>95%</em>"
+msgstr ""
+
+#: gmap_settings_ui.inc:109
+msgid "Default center"
+msgstr ""
+
+#: gmap_settings_ui.inc:113
+msgid "The default center coordinates of Google map, expressed as a decimal latitude and longitude, separated by a comma."
+msgstr ""
+
+#: gmap_settings_ui.inc:117
+msgid "Default zoom"
+msgstr ""
+
+#: gmap_settings_ui.inc:120
+msgid "The default zoom level of a Google map."
+msgstr ""
+
+#: gmap_settings_ui.inc:125
+msgid "Maximum initial zoom"
+msgstr ""
+
+#: gmap_settings_ui.inc:128
+msgid "The maximum initial zoom (affects things such as the zoom of the node location block.)"
+msgstr ""
+
+#: gmap_settings_ui.inc:135
+msgid "Line default style"
+msgstr ""
+
+#: gmap_settings_ui.inc:136
+msgid "Lines without a specific style defined will fall back to this style"
+msgstr ""
+
+#: gmap_settings_ui.inc:142
+msgid "Polygon default style"
+msgstr ""
+
+#: gmap_settings_ui.inc:143
+msgid "Polygons without a specific style defined will fall back to this style"
+msgstr ""
+
+#: gmap_settings_ui.inc:149
+msgid "Default control type"
+msgstr ""
+
+#: gmap_settings_ui.inc:150;159
+msgid "None"
+msgstr ""
+
+#: gmap_settings_ui.inc:150
+msgid "Micro"
+msgstr ""
+
+#: gmap_settings_ui.inc:150
+msgid "Small"
+msgstr ""
+
+#: gmap_settings_ui.inc:150
+msgid "Large"
+msgstr ""
+
+#: gmap_settings_ui.inc:157
+msgid "Map Type Control"
+msgstr ""
+
+#: gmap_settings_ui.inc:160
+msgid "Standard (GMapTypeControl)"
+msgstr ""
+
+#: gmap_settings_ui.inc:161
+msgid "Hierarchical (GHierarchicalMapTypeControl)"
+msgstr ""
+
+#: gmap_settings_ui.inc:162
+msgid "Dropdown (GMenuMapTypeControl)"
+msgstr ""
+
+#: gmap_settings_ui.inc:169
+msgid "Enabled map types (\"base layers\")"
+msgstr ""
+
+#: gmap_settings_ui.inc:189
+msgid "Default map type"
+msgstr ""
+
+#: gmap_settings_ui.inc:214
+msgid "Map Behavior flags"
+msgstr ""
+
+#: gmap_settings_ui.inc:216
+msgid "Behavior flags modify how a map behaves. Grayed out flags are not settable here, but may be set on a map by map basis via code or a macro. Changes to behaviors will not affect the preview map shown above until changes are saved."
+msgstr ""
+
+#: gmap_settings_ui.inc:223
+msgid "@name : @title"
+msgstr ""
+
+#: gmap_settings_ui.inc:236 gmap_location.module:518;587
+msgid "Marker action"
+msgstr ""
+
+#: gmap_settings_ui.inc:237 gmap_location.module:519;588
+msgid "Perform this action when a marker is clicked."
+msgstr ""
+
+#: gmap_settings_ui.inc:238 gmap_location.module:520;589
+msgid "Do nothing"
+msgstr ""
+
+#: gmap_settings_ui.inc:238 gmap_location.module:520;589
+msgid "Open info window"
+msgstr ""
+
+#: gmap_settings_ui.inc:238 gmap_location.module:520;589
+msgid "Open link"
+msgstr ""
+
+#: gmap_settings_ui.inc:247
+msgid "Default Line 1 Color"
+msgstr ""
+
+#: gmap_settings_ui.inc:254
+msgid "Default Line 2 Color"
+msgstr ""
+
+#: gmap_settings_ui.inc:261
+msgid "Default Line 3 Color"
+msgstr ""
+
+#: gmap_settings_ui.inc:336
+msgid "Marker manager"
+msgstr ""
+
+#: gmap_settings_ui.inc:344
+msgid "No manager (use GMap API directly)"
+msgstr ""
+
+#: gmap_settings_ui.inc:345
+msgid "Google's GMarkerManager"
+msgstr ""
+
+#: gmap_settings_ui.inc:346
+msgid "GMaps Utility Library MarkerManager"
+msgstr ""
+
+#: gmap_settings_ui.inc:347
+msgid "GMaps Utility Library MarkerClusterer"
+msgstr ""
+
+#: gmap_settings_ui.inc:348
+msgid "Jef Poskanzer's Clusterer"
+msgstr ""
+
+#: gmap_settings_ui.inc:349
+msgid "Martin Pearman's ClusterMarker"
+msgstr ""
+
+#: gmap_settings_ui.inc:352
+msgid "If you are planning on using many markers on a single map, you may want to consider using a marker manager to speed up map rendering."
+msgstr ""
+
+#: gmap_settings_ui.inc:358
+msgid "Unmanaged marker settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:359
+msgid "There are no settings for unmanaged markers."
+msgstr ""
+
+#: gmap_settings_ui.inc:367
+msgid "GMarkerManager settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:368
+msgid "GMarkerManager is a new part of the official Google Maps API that provides a marker manager."
+msgstr ""
+
+#: gmap_settings_ui.inc:374;431;574
+msgid "Border padding"
+msgstr ""
+
+#: gmap_settings_ui.inc:375;432;575
+msgid "Markers located less than this number of pixels from the viewport will be added to the map by the manager (even if they would be fully invisible.)"
+msgstr ""
+
+#: gmap_settings_ui.inc:382;408;439;466;497
+msgid "Maximum zoom"
+msgstr ""
+
+#: gmap_settings_ui.inc:384;441
+msgid "At the specified zoom level and above, the marker manager will disable itself for additional speed."
+msgstr ""
+
+#: gmap_settings_ui.inc:389;446
+msgid "Track markers"
+msgstr ""
+
+#: gmap_settings_ui.inc:390;447
+msgid "If enabled, the marker manager will track marker movements. Leave off unless you need to move markers around with setPoint."
+msgstr ""
+
+#: gmap_settings_ui.inc:395;452
+msgid "Marker defaults"
+msgstr ""
+
+#: gmap_settings_ui.inc:396
+msgid "Default marker-specific settings for GMarkerManager. Markers will appear when the current zoom level is between minZoom and maxZoom."
+msgstr ""
+
+#: gmap_settings_ui.inc:400;457
+msgid "Minimum zoom"
+msgstr ""
+
+#: gmap_settings_ui.inc:402;459
+msgid "At the specified zoom level and above (i.e. zooming in,) the marker will be shown. Choose 0 to show markers at all zoom levels by default."
+msgstr ""
+
+#: gmap_settings_ui.inc:410;468
+msgid "At the specified zoom level and above (i.e. zooming in,) the marker will be hidden. Choose 0 to disable by default."
+msgstr ""
+
+#: gmap_settings_ui.inc:418
+msgid "MarkerManager settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:419
+msgid "MarkerManager is the improved open source version of GMarkerManager. To use, you must download it from <a href=\"@url\">here</a> and place it in the <em>thirdparty</em> folder."
+msgstr ""
+
+#: gmap_settings_ui.inc:425;483;513;568
+msgid "Filename"
+msgstr ""
+
+#: gmap_settings_ui.inc:426;484;514;569
+msgid "Name of downloaded file in the thirdparty folder. Default: %default"
+msgstr ""
+
+#: gmap_settings_ui.inc:453
+msgid "Default marker-specific settings for MarkerManager. Markers will appear when the current zoom level is between minZoom and maxZoom."
+msgstr ""
+
+#: gmap_settings_ui.inc:476
+msgid "MarkerClusterer settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:477
+msgid "MarkerClusterer creates and manages per-zoom-level clusters for large amounts of markers (hundreds or thousands.) To use, you must download it from <a href=\"@url\">here</a> and place it in the <em>thirdparty</em> folder."
+msgstr ""
+
+#: gmap_settings_ui.inc:489
+msgid "Grid Size"
+msgstr ""
+
+#: gmap_settings_ui.inc:490
+msgid "The grid size of a cluster in pixels. Each cluster will be a square. If you want the algorithm to run faster, you can set this value larger."
+msgstr ""
+
+#: gmap_settings_ui.inc:499
+msgid "At this zoom and above, all markers will be shown without clustering."
+msgstr ""
+
+#: gmap_settings_ui.inc:506
+msgid "Clusterer settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:507
+msgid "Clusterer is a marker manager written by Jef Poskanzer of acme.com. To use, you must place Clusterer2.js (available <a href=\"@url\">here</a>) into the \"thirdparty\" folder."
+msgstr ""
+
+#: gmap_settings_ui.inc:519;588
+msgid "Marker for clusters"
+msgstr ""
+
+#: gmap_settings_ui.inc:520;589
+msgid "The marker to use when creating a cluster."
+msgstr ""
+
+#: gmap_settings_ui.inc:525
+msgid "Activate on"
+msgstr ""
+
+#: gmap_settings_ui.inc:526;535
+msgid "or more markers"
+msgstr ""
+
+#: gmap_settings_ui.inc:527
+msgid "Clustering is enabled when more than the specified number of markers are visible at the same time."
+msgstr ""
+
+#: gmap_settings_ui.inc:534
+msgid "Cluster on"
+msgstr ""
+
+#: gmap_settings_ui.inc:536
+msgid "Minimal number of markers per cluster"
+msgstr ""
+
+#: gmap_settings_ui.inc:543
+msgid "Lines per box"
+msgstr ""
+
+#: gmap_settings_ui.inc:544
+msgid "at most"
+msgstr ""
+
+#: gmap_settings_ui.inc:545
+msgid "lines"
+msgstr ""
+
+#: gmap_settings_ui.inc:546
+msgid "Maximum number of lines per info box"
+msgstr ""
+
+#: gmap_settings_ui.inc:553
+msgid "Popup mode"
+msgstr ""
+
+#: gmap_settings_ui.inc:554
+msgid "Original"
+msgstr ""
+
+#: gmap_settings_ui.inc:554
+msgid "Zoom to Cluster"
+msgstr ""
+
+#: gmap_settings_ui.inc:561
+msgid "ClusterMarker settings"
+msgstr ""
+
+#: gmap_settings_ui.inc:562
+msgid "ClusterMarker is a marker manager written by Martin Pearman. To use, you must download it from <a href=\"@url\">here</a> and extract the appropriate file to the <em>thirdparty</em> folder."
+msgstr ""
+
+#: gmap_settings_ui.inc:582
+msgid "Clustering enabled"
+msgstr ""
+
+#: gmap_settings_ui.inc:583
+msgid "Whether to use clustering or not."
+msgstr ""
+
+#: gmap_settings_ui.inc:594
+msgid "Title for clusters"
+msgstr ""
+
+#: gmap_settings_ui.inc:595
+msgid "The title to use for clusters. %count will be replaced with the number of markers in the cluster."
+msgstr ""
+
+#: gmap_settings_ui.inc:600
+msgid "Maximum zoom for zooming to cluster"
+msgstr ""
+
+#: gmap_settings_ui.inc:602
+msgid "When clicking on a cluster, the map will not zoom in farther than this."
+msgstr ""
+
+#: gmap_settings_ui.inc:607
+msgid "Intersect Padding"
+msgstr ""
+
+#: gmap_settings_ui.inc:608
+msgid "Number of pixels to pad marker icons by when determining whether they intersect."
+msgstr ""
+
+#: gmap_settings_ui.inc:622
+msgid "Marker cache regenerated."
+msgstr ""
+
+#: gmap_settings_ui.inc:633
+msgid "You must select at least one baselayer!"
+msgstr ""
+
+#: gmap_settings_ui.inc:638
+msgid "The default map type must be an enabled baselayer!"
+msgstr ""
+
+#: gmap.module:105
+msgid "GMap marker file settings are not configured properly for Private download method, markers will not work!"
+msgstr ""
+
+#: gmap.module:153
+msgid "Location chooser"
+msgstr ""
+
+#: gmap.module:155
+msgid "Used to activate location choosing using a gmap."
+msgstr ""
+
+#: gmap.module:159
+msgid "Disable dragging"
+msgstr ""
+
+#: gmap.module:161
+msgid "Remove the ability for the user to drag the map. If dragging is disabled, keyboard shortcuts are implicitly disabled."
+msgstr ""
+
+#: gmap.module:164
+msgid "Disable keyboard"
+msgstr ""
+
+#: gmap.module:166
+msgid "Disable the keyboard shortcuts."
+msgstr ""
+
+#: gmap.module:174
+msgid "Disable Continuous Zoom"
+msgstr ""
+
+#: gmap.module:176
+msgid "Disable dynamically resizing images while waiting for tiles to load when zooming."
+msgstr ""
+
+#: gmap.module:179
+msgid "Use AutoZoom"
+msgstr ""
+
+#: gmap.module:181
+msgid "Automatically zoom the map to fit all markers when markers are added."
+msgstr ""
+
+#: gmap.module:184
+msgid "Unconditionally enable marker interface"
+msgstr ""
+
+#: gmap.module:186
+msgid "Load the marker loader system even if no markers to load are detected. Useful if you are injecting markers from somewhere else."
+msgstr ""
+
+#: gmap.module:189
+msgid "Enable Overview Map"
+msgstr ""
+
+#: gmap.module:191
+msgid "Enable the \"overview map\" in the bottom right corner."
+msgstr ""
+
+#: gmap.module:201
+msgid "Work around bugs when maps appear in collapsible fieldsets"
+msgstr ""
+
+#: gmap.module:203
+msgid "Enabling this will work around some issues that can occur when maps appear inside collapsible fieldsets."
+msgstr ""
+
+#: gmap.module:208
+msgid "Add scale control to map."
+msgstr ""
+
+#: gmap.module:210
+msgid "Adds a scale control to the map in the default position."
+msgstr ""
+
+#: gmap.module:214
+msgid "Enable extra marker events."
+msgstr ""
+
+#: gmap.module:216
+msgid "Used for advanced javascript work, this will enable the <em>mouseovermarker</em>, <em>mouseoutmarker</em>, and <em>dblclickmarker</em> events."
+msgstr ""
+
+#: gmap.module:220
+msgid "Enable clickable shapes."
+msgstr ""
+
+#: gmap.module:222
+msgid "Used for advanced javascript work, this will enable the <em>clickshape</em> event."
+msgstr ""
+
+#: gmap.module:230
+msgid "Map: Standard street map."
+msgstr ""
+
+#: gmap.module:232
+msgid "The standard default street map. Internal name: G_NORMAL_MAP"
+msgstr ""
+
+#: gmap.module:235
+msgid "Satellite: Standard satellite map."
+msgstr ""
+
+#: gmap.module:237
+msgid "Satellite view without street overlay. Internal name: G_SATELLITE_MAP"
+msgstr ""
+
+#: gmap.module:240
+msgid "Hybrid: Hybrid satellite map."
+msgstr ""
+
+#: gmap.module:242
+msgid "Satellite view with street overlay. Internal name: G_HYBRID_MAP"
+msgstr ""
+
+#: gmap.module:245
+msgid "Terrain: Physical feature map."
+msgstr ""
+
+#: gmap.module:247
+msgid "Map with physical data (terrain, vegetation.) Internal name: G_PHYSICAL_MAP"
+msgstr ""
+
+#: gmap.module:428
+msgid "The specified value is not a valid CSS dimension."
+msgstr ""
+
+#: gmap.module:438
+msgid "GMap macro expander"
+msgstr ""
+
+#: gmap.module:441
+msgid "Google map filter"
+msgstr ""
+
+#: gmap.module:444
+msgid "Converts a Google Map macro into the HTML required for inserting a Google Map."
+msgstr ""
+
+#: gmap.module:468;471
+msgid "Insert Google Map macro."
+msgstr ""
+
+#: gmap.module:468
+msgid "Create a macro"
+msgstr ""
+
+#: gmap.module:483 gmap.info:0
+msgid "GMap"
+msgstr ""
+
+#: gmap.module:484
+msgid "Configure GMap settings"
+msgstr ""
+
+#: gmap.module:579
+msgid "Stroke color"
+msgstr ""
+
+#: gmap.module:586
+msgid "Stroke weight"
+msgstr ""
+
+#: gmap.module:587
+msgid "Thickness of line, in pixels."
+msgstr ""
+
+#: gmap.module:590
+msgid "px"
+msgstr ""
+
+#: gmap.module:597
+msgid "Stroke opacity"
+msgstr ""
+
+#: gmap.module:607
+msgid "Fill color"
+msgstr ""
+
+#: gmap.module:608
+msgid "Hex color value for fill color. Example: #<em>00AA33</em>"
+msgstr ""
+
+#: gmap.module:618
+msgid "Fill opacity"
+msgstr ""
+
+#: gmap.module:619
+msgid "Opacity of fill, from 0 to 100%."
+msgstr ""
+
+#: gmap.module:650
+msgid "Overlay editor"
+msgstr ""
+
+#: gmap.module:656
+msgid "Click map"
+msgstr ""
+
+#: gmap.module:659
+msgid "Points"
+msgstr ""
+
+#: gmap.module:660
+msgid "Lines"
+msgstr ""
+
+#: gmap.module:661
+msgid "Circles"
+msgstr ""
+
+#: gmap.module:662
+msgid "Filled Polygons"
+msgstr ""
+
+#: gmap.module:668
+msgid "Click marker / segment"
+msgstr ""
+
+#: gmap.module:671
+msgid "Remove"
+msgstr ""
+
+#: gmap.module:674
+msgid "Edit Info"
+msgstr ""
+
+#: gmap.module:683
+msgid "Marker"
+msgstr ""
+
+#: gmap.module:690
+msgid "Line style"
+msgstr ""
+
+#: gmap.module:698
+msgid "Use for new and changed lines"
+msgstr ""
+
+#: gmap.module:705
+msgid "Polygon style"
+msgstr ""
+
+#: gmap.module:713
+msgid "Use for new and changed polygons"
+msgstr ""
+
+#: gmap.module:817
+msgid "Unable to render map: Google Maps API key is missing."
+msgstr ""
+
+#: gmap.module:896
+msgid "Javascript is required to view this map."
+msgstr ""
+
+#: gmap.module:901
+msgid "Duplicate map detected! GMap does not support multiplexing maps onto one MapID! GMap MapID: %mapid"
+msgstr ""
+
+#: gmap.module:1151
+msgid "Gmap"
+msgstr ""
+
+#: gmap.module:1172
+msgid "Google Maps"
+msgstr ""
+
+#: gmap_location.module:57
+msgid "User locations"
+msgstr ""
+
+#: gmap_location.module:70
+msgid "Node locations"
+msgstr ""
+
+#: gmap_location.module:83 gmap_location.info:0
+msgid "GMap Location"
+msgstr ""
+
+#: gmap_location.module:87
+msgid "Configure GMap Location settings."
+msgstr ""
+
+#: gmap_location.module:238
+msgid "To add/change your location to the user map, <a href=\"@url\">edit your location</a>."
+msgstr ""
+
+#: gmap_location.module:461
+msgid "Location settings for users"
+msgstr ""
+
+#: gmap_location.module:465
+msgid "Profile map"
+msgstr ""
+
+#: gmap_location.module:467;475
+msgid "Let users set/edit their location in their profile."
+msgstr ""
+
+#: gmap_location.module:471
+msgid "Profile category title"
+msgstr ""
+
+#: gmap_location.module:481
+msgid "User settings"
+msgstr ""
+
+#: gmap_location.module:489
+msgid "User Map (<em>map/user</em>)"
+msgstr ""
+
+#: gmap_location.module:494;563
+msgid "Macro"
+msgstr ""
+
+#: gmap_location.module:498
+msgid "The gmap macro where the user information will be diplayed on."
+msgstr ""
+
+#: gmap_location.module:502;571
+msgid "Page header"
+msgstr ""
+
+#: gmap_location.module:503
+msgid "Text at the top of the user map."
+msgstr ""
+
+#: gmap_location.module:510;579
+msgid "Page footer"
+msgstr ""
+
+#: gmap_location.module:511
+msgid "Text at the bottom of the user map."
+msgstr ""
+
+#: gmap_location.module:528
+msgid "Markers per role"
+msgstr ""
+
+#: gmap_location.module:529
+msgid "Choose a marker to represent each user role on the user map. If a user belongs to multiple roles, the marker for the highest Role ID will be used."
+msgstr ""
+
+#: gmap_location.module:543
+msgid "%role (Role ID: %rid)"
+msgstr ""
+
+#: gmap_location.module:550
+msgid "Node settings"
+msgstr ""
+
+#: gmap_location.module:558
+msgid "Node Map (<em>map/node</em>)"
+msgstr ""
+
+#: gmap_location.module:567
+msgid "The gmap macro where the node information will be diplayed on."
+msgstr ""
+
+#: gmap_location.module:572
+msgid "Text at the top of the node map."
+msgstr ""
+
+#: gmap_location.module:580
+msgid "Text at the bottom of the node map."
+msgstr ""
+
+#: gmap_location.module:596
+msgid "Markers per content type"
+msgstr ""
+
+#: gmap_location.module:597
+msgid "Choose a marker to represent each type of content on the node map."
+msgstr ""
+
+#: gmap_location.module:608
+msgid "Marker for %type"
+msgstr ""
+
+#: gmap_location.module:613
+msgid "This content type is not currently Location enabled."
+msgstr ""
+
+#: gmap_location.module:625
+msgid "Location map"
+msgstr ""
+
+#: gmap_location.module:626
+msgid "Author map"
+msgstr ""
+
+#: gmap_location.module:634;658
+msgid "Map Macro"
+msgstr ""
+
+#: gmap_location.module:637
+msgid "A macro to be used as a base map for the location block.  This map will be recentered on the location, so the center is not that important. <p>Alternate base map macros can be entered for a specific node type below."
+msgstr ""
+
+#: gmap_location.module:647
+msgid "Map Macro for %type"
+msgstr ""
+
+#: gmap_location.module:661
+msgid "A macro to be used as a base map for the location block author.  This map will be recentered on the location, so the center is not that important."
+msgstr ""
+
+#: gmap_location.module:667
+msgid "Enable author block for the following content types"
+msgstr ""
+
+#: gmap_location.module:674
+msgid "Marker to use for author map"
+msgstr ""
+
+#: gmap_location.module:788 gmap.info:0 gmap_location.info:0 gmap_macro_builder.info:0 gmap_taxonomy.info:0 gmap_views.info:0
+msgid "Location"
+msgstr ""
+
+#: gmap_location.module:828
+msgid "Author Location"
+msgstr ""
+
+#: gmap_location.module:900
+msgid "location map"
+msgstr ""
+
+#: gmap_location.module:934
+msgid "Coordinates"
+msgstr ""
+
+#: gmap_location.module:945 gmap_views.module:207
+msgid "Latitude"
+msgstr ""
+
+#: gmap_location.module:953 gmap_views.module:211
+msgid "Longitude"
+msgstr ""
+
+#: gmap_location.module:957
+msgid "The latitude and longitude will be entered here when you click on a location in the interactive map above. You can also fill in the values manually."
+msgstr ""
+
+#: gmap_location.module:16
+msgid "set user location"
+msgstr ""
+
+#: gmap_location.module:17
+msgid "view node map"
+msgstr ""
+
+#: gmap_location.module:18
+msgid "view user map"
+msgstr ""
+
+#: gmap_location.module:19
+msgid "view user location details"
+msgstr ""
+
+#: gmap_macro_builder.module:17
+msgid "You can use this interface to create a map macro suitable for pasting into a node or any other place that accepts a GMap macro."
+msgstr ""
+
+#: gmap_macro_builder.module:37
+msgid "Build a GMap macro"
+msgstr ""
+
+#: gmap_macro_builder.module:59
+msgid "Gmap macro creation"
+msgstr ""
+
+#: gmap_macro_builder.module:83
+msgid "Map id attribute"
+msgstr ""
+
+#: gmap_macro_builder.module:84
+msgid "If you need to access this map from a script, you can assign a map ID here."
+msgstr ""
+
+#: gmap_macro_builder.module:105
+msgid "Map type"
+msgstr ""
+
+#: gmap_macro_builder.module:115
+msgid "Controls"
+msgstr ""
+
+#: gmap_macro_builder.module:125
+msgid "Address"
+msgstr ""
+
+#: gmap_macro_builder.module:131
+msgid "The Latitude and Longitude of the centre of the map"
+msgstr ""
+
+#: gmap_macro_builder.module:137
+msgid "Map width"
+msgstr ""
+
+#: gmap_macro_builder.module:141
+msgid "The map width, as a CSS length or percentage. Examples: <em>50px</em>, <em>5em</em>, <em>2.5in</em>, <em>95%</em>"
+msgstr ""
+
+#: gmap_macro_builder.module:147
+msgid "Map height"
+msgstr ""
+
+#: gmap_macro_builder.module:151
+msgid "The map height, as a CSS length or percentage. Examples: <em>50px</em>, <em>5em</em>, <em>2.5in</em>, <em>95%</em>"
+msgstr ""
+
+#: gmap_macro_builder.module:158
+msgid "Alignment"
+msgstr ""
+
+#: gmap_macro_builder.module:163
+msgid "The current magnification of the map"
+msgstr ""
+
+#: gmap_macro_builder.module:173
+msgid "Macro text"
+msgstr ""
+
+#: gmap_macro_builder.module:25
+msgid "create gmap macro"
+msgstr ""
+
+#: gmap_taxonomy.module:18
+msgid "GMap markers"
+msgstr ""
+
+#: gmap_taxonomy.module:27
+msgid "Enable"
+msgstr ""
+
+#: gmap_taxonomy.module:28
+msgid "Enable choosing a marker for terms in this vocabulary."
+msgstr ""
+
+#: gmap_taxonomy.module:47
+msgid "GMap Marker"
+msgstr ""
+
+#: gmap_taxonomy.module:49
+msgid "No Marker"
+msgstr ""
+
+#: gmap_taxonomy.module:50
+msgid "If you would like nodes tagged as this term to have a special marker, choose one here."
+msgstr ""
+
+#: gmap_taxonomy.module:172
+msgid "GMap Taxonomy: Marker"
+msgstr ""
+
+#: gmap_taxonomy.module:173
+msgid "Displays the marker name GMap Taxonomy associates with this node."
+msgstr ""
+
+#: gmap_views.module:15
+msgid "Gmap View"
+msgstr ""
+
+#: gmap_views.module:31
+msgid "Views \"fat\" markers"
+msgstr ""
+
+#: gmap_views.module:33
+msgid "Enabling this flag will pass the raw views data with a marker for use with custom manipulation code. Hook the preparemarker event to make use of this."
+msgstr ""
+
+#: gmap_views.module:55
+msgid "GMap View requires: either \"Location: Latitude\" and \"Location: Longitude\" or a field titled \"Latitude\" and a field titled \"Longitude\""
+msgstr ""
+
+#: gmap.install:100
+msgid "Border Padding on marker managers is now defaulting to the recommended 256 pixels, rather than 0 pixels. You may wish to change your marker manager settings on the <a href=\"@url\">GMap settings page</a> to match."
+msgstr ""
+
+#: gmap_location.install:35;39
+msgid "WARNING! Obsolete gmap_location update #@num was triggered! Please verify the schema of your location table manually!"
+msgstr ""
+
+#: gmap_location.install:131;150
+msgid "You have customized the !type macro. Be advised that the new default macro is %macro. Please check your macro on the <a href=\"@url\">block configuration page</a>."
+msgstr ""
+
+#: gmap_location.install:131
+msgid "Location block"
+msgstr ""
+
+#: gmap_location.install:150
+msgid "Author block"
+msgstr ""
+
+#: gmap.info:0
+msgid "Filter to allow insertion of a google map into a node"
+msgstr ""
+
+#: gmap_location.info:0
+msgid "Display location.module information on Google Maps"
+msgstr ""
+
+#: gmap_macro_builder.info:0
+msgid "GMap Macro Builder"
+msgstr ""
+
+#: gmap_macro_builder.info:0
+msgid "UI for building GMap macros."
+msgstr ""
+
+#: gmap_taxonomy.info:0
+msgid "GMap Taxonomy Markers"
+msgstr ""
+
+#: gmap_taxonomy.info:0
+msgid "Taxonomy based markers"
+msgstr ""
+
+#: gmap_views.info:0
+msgid "GMap Views Integration"
+msgstr ""
+
+#: gmap_views.info:0
+msgid "Allows the use of GMap in Views."
+msgstr ""
+
