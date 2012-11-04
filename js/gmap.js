@@ -595,7 +595,7 @@ Drupal.behaviors.GMap = {
       //find mapid
       var id = jQuery(this).attr('id');
       var mapid = id.split('-', 2);
-      
+
       //unload map
       Drupal.gmap.unloadMap(mapid[1]);
     });
