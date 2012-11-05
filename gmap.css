@@ -62,6 +62,10 @@
 }
 
 /* Fix grey map bug in Firefox when img { max-width: 100% } is set */
-.gmap img {
+.gmap img,
+.view-gmap img,
+.openlayers-map img,
+.YMaps img,
+#getlocations_map_canvas img {
   max-width: none !important;
 }
