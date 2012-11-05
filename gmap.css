@@ -61,3 +61,7 @@
   color: grey;
 }
 
+/* Fix grey map bug in Firefox when img { max-width: 100% } is set */
+.gmap img {
+  max-width: none !important;
+}
