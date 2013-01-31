@@ -77,9 +77,9 @@ function gmap_taxonomy_taxonomy_vocabulary_insert($vocabulary) {
  */
 function gmap_taxonomy_taxonomy_vocabulary_update($vocabulary) {
   if (isset($vocabulary->gmap_taxonomy_enable)) {
-    $status = variable_get('gmap_taxonomy_vocabs', array());
-    $status[$vocabulary->machine_name] = $vocabulary->gmap_taxonomy_enable;
-    variable_set('gmap_taxonomy_vocabs', $status);
+    variable_set('gmap_taxonomy_vocab_' . $vocabulary->machine_name, TRUE);
+  } else {
+    variable_del('gmap_taxonomy_vocab_' . $vocabulary->machine_name);
   }
 }
 
@@ -87,9 +87,7 @@ function gmap_taxonomy_taxonomy_vocabulary_update($vocabulary) {
  * Implement hook_taxonomy_vocabulary_delete().
  */
 function gmap_taxonomy_taxonomy_vocabulary_delete($vocabulary) {
-  $status = variable_get('gmap_taxonomy_vocabs', array());
-  unset($status[$vocabulary->machine_name]);
-  variable_set('gmap_taxonomy_vocabs', $status);
+  variable_del('gmap_taxonomy_vocab_' . $vocabulary->machine_name);
 }
 
 /**
@@ -220,11 +218,8 @@ function gmap_taxonomy_vocabulary_is_enabled($vocabulary) {
     $vocabulary = taxonomy_vocabulary_load($vocabulary);
   }
 
-  $enabled_vocabularies = variable_get('gmap_taxonomy_vocabs', array());
-
   return $vocabulary
-    && isset($enabled_vocabularies[$vocabulary->machine_name])
-    && $enabled_vocabularies[$vocabulary->machine_name];
+    && variable_get('gmap_taxonomy_vocab_' . $vocabulary->machine_name, FALSE);
 }
 
 /**

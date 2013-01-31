@@ -107,6 +107,19 @@ function gmap_taxonomy_update_7201() {
 }
 
 /**
+ * Split settings in a variable for each vocabulary.
+ */
+function gmap_taxonomy_update_7202() {
+  $enabled_vocabularies = variable_get('gmap_taxonomy_vocabs', array());
+
+  foreach ($enabled_vocabularies as $machine_name => $enabled) {
+    variable_set('gmap_taxonomy_vocab_' . $machine_name, $enabled);
+  }
+
+  variable_del('gmap_taxonomy_vocabs');
+}
+
+/**
  * Rebuild {gmap_taxonomy_node} again.
  */
 /*
