@@ -109,8 +109,8 @@ class gmap_plugin_style_gmap extends views_plugin_style {
     else if ($this->options['datasource'] == 'fields') {
       $lat_field_obj = $this->view->display_handler->get_handler('field', $this->options['latfield']);
       $lon_field_obj = $this->view->display_handler->get_handler('field', $this->options['lonfield']);
-      $lat_field = $this->options['latfield'];
-      $lon_field = $this->options['lonfield'];
+      $lat_field = $lat_fied_obj->field_alias;
+      $lon_field = $lon_field_obj->field_alias;
     }
 
     // Determine fieldname for marker field.
@@ -193,8 +193,8 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $custom_field_lat = isset($row->{$custom_field_latname}[0]['raw']) ? $row->{$custom_field_latname}[0]['raw'] : NULL;
           $custom_field_lon = isset($row->{$custom_field_lonname}[0]['raw']) ? $row->{$custom_field_lonname}[0]['raw'] : NULL;
           if ($custom_field_lat && $custom_field_lon) {
-            $lat = (float)$custom_field_lat['value'];
-            $lon = (float)$custom_field_lon['value'];
+           $lat = (float)$row->{$lat_field};
+           $lon = (float)$row->{$lon_field};
           }
         }
 
