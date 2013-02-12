@@ -566,6 +566,10 @@ function gmap_menu() {
  * Regenerate the markerdata file.
  */
 function gmap_regenerate_markers() {
+  // This often fails in cli mode, so bail.
+  if (drupal_is_cli()) {
+    return;
+  }
   $contents = '';
 
   $contents .= "// GMap marker image data.\n";
