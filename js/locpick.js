@@ -31,7 +31,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
         if (event) {
           if (!obj.locpick_point) {
             obj.locpick_point = new google.maps.Marker({
-              position: event.latLng, 
+              position: event.latLng,
               map: obj.map,
               draggable: true
             });
