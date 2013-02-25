@@ -123,7 +123,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     // Tabbed content
     else if (marker.tabs) {
       var data = "";
-      //tabs in an infowindow is no longer supported in API ver3. 
+      //tabs in an infowindow is no longer supported in API ver3.
       for (var m in marker.tabs) {
         data += marker.tabs[m];
       }
@@ -144,8 +144,8 @@ Drupal.gmap.addHandler('gmap', function (elem) {
         var listener = google.maps.event.addListener(obj.map, "idle", function() {
           if (obj.vars.maxzoom) {
             var maxzoom = parseInt(obj.vars.maxzoom)
-            if (obj.map.getZoom() > maxzoom) obj.map.setZoom(maxzoom); 
-            google.maps.event.removeListener(listener);             
+            if (obj.map.getZoom() > maxzoom) obj.map.setZoom(maxzoom);
+            google.maps.event.removeListener(listener);
           }
         });
       }
