@@ -109,7 +109,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
     else if ($this->options['datasource'] == 'fields') {
       $lat_field_obj = $this->view->display_handler->get_handler('field', $this->options['latfield']);
       $lon_field_obj = $this->view->display_handler->get_handler('field', $this->options['lonfield']);
-      $lat_field = $lat_fied_obj->field_alias;
+      $lat_field = $lat_field_obj->field_alias;
       $lon_field = $lon_field_obj->field_alias;
     }
 
