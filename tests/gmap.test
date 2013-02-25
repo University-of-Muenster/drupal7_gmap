@@ -6,6 +6,7 @@
  */
 
 class GMapSimpleAPITest extends DrupalUnitTestCase {
+
   public static function getInfo() {
     return array(
       'name' => 'GMap API sanity checks',
@@ -13,6 +14,11 @@ class GMapSimpleAPITest extends DrupalUnitTestCase {
       'group' => 'GMap',
     );
   }
+
+public function setUp(){
+  drupal_load('module', 'gmap');
+  parent::setUp();
+}
 
   /**
    * Verify gmap_todim().
