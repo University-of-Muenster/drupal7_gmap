@@ -8,7 +8,7 @@
 
 Drupal.gmap.addHandler('gmap', function (elem) {
   var obj = this;
-  
+
   var infowindow = null;
 
   obj.bind('init', function () {
