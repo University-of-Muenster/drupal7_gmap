@@ -75,7 +75,7 @@ Drupal.gmap.getIcon = function (setname, sequence) {
       else {
         this.gshadows[setname][i] = null;
       }
-      
+
       for (var j = 0; j < othimg.length; j++) {
         if (q[othimg[j]] !== '') {
           t[othimg[j]] = p + q[othimg[j]];
