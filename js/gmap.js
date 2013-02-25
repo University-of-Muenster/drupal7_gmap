@@ -249,7 +249,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
   });
   // Send out outgoing control type changes.
   // N/A
-   
+
   // Respond to incoming map type changes.
   _ib.mtc = obj.bind("maptypechange", function () {
     obj.map.setMapTypeId(obj.getMapTypeId(obj.vars.maptype));
@@ -261,10 +261,10 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     // Bootup options.
     var opts = {}; // Object literal google.maps.MapOptions
     obj.opts = opts;
-    
+
     // Disable default UI for custom options
     opts.disableDefaultUI = true;
-    
+
     // Set draggable property
     if (obj.vars.behavior.nodrag) {
       opts.draggable = false;
