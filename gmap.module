@@ -349,7 +349,7 @@ function _gmap_base_js() {
     );
   }
 
-  $ret[variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
+  $ret[variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_marker.js'] = array(
     'type' => 'external',
     'weight' => 2,
   );
