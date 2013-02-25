@@ -422,7 +422,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     google.maps.event.addListener(map, 'click', function(event) {
       alert(Drupal.gmap.getIcon("big blue", 0));
       var marker = new google.maps.Marker({
-        position: event.latLng, 
+        position: event.latLng,
         map: map
       });
       google.maps.event.addListener(marker, 'click', function() {
