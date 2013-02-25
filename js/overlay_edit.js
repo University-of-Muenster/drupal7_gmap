@@ -210,7 +210,7 @@ Drupal.gmap.addHandler('overlayedit', function (elem) {
               }
               obj._oe.markerseq[m] = obj._oe.markerseq[m] + 1;
               var p = new google.maps.Marker({
-                position: point, 
+                position: point,
                 map: obj.map,
                 icon: Drupal.gmap.getIcon(m, obj._oe.markerseq[m]).ra
               });
@@ -262,7 +262,7 @@ Drupal.gmap.addHandler('overlayedit', function (elem) {
               var coord = [ new google.maps.LatLng(point) ];
               var p = new google.maps.Polyline({path:coord, strokeColor:"#"+s[0], strokeOpacity:s[2]/100, strokeWeight:Number(s[1])});
               p.setMap(obj.map);
-              
+
               ctx.overlay = p;
               obj._oe.featuresRef[p] = obj._oe.features.push(ctx) - 1;
 
