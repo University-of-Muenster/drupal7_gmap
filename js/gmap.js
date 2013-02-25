@@ -524,7 +524,7 @@ Drupal.gmap.addHandler('maptype', function (elem) {
     }
     return null;
   };
-  
+
   ////////////////////////////////////////
   //           Width widget             //
   ////////////////////////////////////////
