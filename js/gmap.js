@@ -340,7 +340,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     else if (obj.vars.controltype === 'Large') {
       opts.navigationControlOptions = {style: google.maps.NavigationControlStyle.ZOOM_PAN};
     }
-    
+
     // Set scale control visibility
     opts.scaleControl = obj.vars.behavior.scale;
 
@@ -352,7 +352,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     if (obj.vars.behavior.nocontzoom) {
       opts.disableDoubleClickZoom = true;
     }
-    
+
   });
 
   obj.bind("boot", function () {
@@ -370,7 +370,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     // if (obj.vars.behavior.googlebar) {
     //   map.enableGoogleBar();
     // }
-   
+
     if (obj.vars.extent) {
       var c = obj.vars.extent;
       var extent = new google.maps.LatLngBounds(new google.maps.LatLng(c[0][0], c[0][1]), new google.maps.LatLng(c[1][0], c[1][1]));
