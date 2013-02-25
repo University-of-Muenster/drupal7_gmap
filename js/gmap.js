@@ -187,14 +187,14 @@ Drupal.gmap.map = function (v) {
       obj.change(name, id, userdata);
     }, 0);
   };
-  
+
   this.getMapTypeName = function(type) {
     if (type == 'map' || type == 'roadmap') return 'Map';
     if (type == 'hybrid') return 'Hybrid';
     if (type == 'physical' || type == 'terrain') return 'Physical';
     if (type == 'satellite') return 'Satellite';
-  };  
-  
+  };
+
   this.getMapTypeId = function(type) {
     if (type == 'Map' || type == 'Roadmap') return google.maps.MapTypeId.ROADMAP;
     if (type == 'Hybrid') return google.maps.MapTypeId.HYBRID;
