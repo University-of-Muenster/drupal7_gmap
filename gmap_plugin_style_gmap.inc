@@ -270,7 +270,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           if ($this->options['enablermt']) {
             $marker['rmt'] = $row->{$rmt_field};
           }
-          else {
+          elseif (!empty($defaults['markermode'])) {
             // Marker mode: popup.
             if ($defaults['markermode'] == 1) {
               $marker['text'] = $this->row_plugin->render($row);
