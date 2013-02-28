@@ -4,3 +4,4 @@ package = Location
 core = 7.x
 dependencies[] = taxonomy
 dependencies[] = gmap
+files[] = gmap_taxonomy.module
