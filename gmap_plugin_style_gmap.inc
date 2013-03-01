@@ -180,7 +180,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $lon = (float)$row->{$lon_field};
         }
         else if ($this->options['datasource'] == 'geofield') {
-          $geofield_name = 'field_' . $this->options['markerfield'];
+          $geofield_name = 'field_' . $this->options['geofield'];
           $geofield = isset($row->{$geofield_name}[0]['raw']) ? $row->{$geofield_name}[0]['raw'] : NULL;
           if ($geofield) {
             $lat = (float)$geofield[$lat_field];
