@@ -135,7 +135,7 @@ function gmap_gmap($op, &$map) {
       drupal_add_js($path . 'icon.js');
       drupal_add_js($path . 'marker.js');
       drupal_add_js($path . 'highlight.js');
-      drupal_add_js('/' . variable_get('file_public_path', conf_path() . '/files')  . '/js/gmap_markers.js');
+      drupal_add_js($GLOBALS['base_url'] .'/'. variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js');
       drupal_add_js($path . 'gmap_marker.js');
       drupal_add_js($path . 'poly.js');
 
@@ -201,12 +201,12 @@ function gmap_gmap($op, &$map) {
           'help' => t('Enable the "overview map" in the bottom right corner.'),
           'previewable' => TRUE,
         ),
-/*        'notype' => array(
-          'title' => t('Disable map type control'),
-          'default' => FALSE,
-          'help' => t('Removes the map type control from the upper right corner. Recommended for very narrow maps.'),
-          'previewable' => TRUE,
-        ), */
+        /*        'notype' => array(
+                  'title' => t('Disable map type control'),
+                  'default' => FALSE,
+                  'help' => t('Removes the map type control from the upper right corner. Recommended for very narrow maps.'),
+                  'previewable' => TRUE,
+                ), */
         'collapsehack' => array(
           'title' => t('Work around bugs when maps appear in collapsible fieldsets'),
           'default' => FALSE,
@@ -278,28 +278,28 @@ function gmap_gmap($op, &$map) {
 function _gmap_base_js() {
   $ret = array();
   $path = drupal_get_path('module', 'gmap');
-  
+
   $ret[$path . '/js/gmap.js'] = array('weight' => 1);
   $ret[$path . '/js/icon.js'] = array('weight' => 2);
 
-/*
-  $mms = variable_get('gmap_markermanager', array());
-  if (empty($mms[$mm])) {
-    $mms[$mm] = array();
-  }
-  // If you really really want to override the marker manager, implement
-  // this, take $mm by ref, and have fun. --Bdragon
-  if (function_exists('_gmap_markermanager_override')) {
-    _gmap_markermanager_override($mm, $mms);
-  }
-  if ($mm == 'clusterer' || $mm == 'clustermarker') {
-    // Needed for access to clusterer marker.
-    drupal_add_js($gmap_path . '/js/icon.js');
-  }
-  if (isset($mms[$mm]['filename'])) {
-    drupal_add_js($gmap_path . '/thirdparty/' . $mms[$mm]['filename']);
-  }
-*/
+  /*
+    $mms = variable_get('gmap_markermanager', array());
+    if (empty($mms[$mm])) {
+      $mms[$mm] = array();
+    }
+    // If you really really want to override the marker manager, implement
+    // this, take $mm by ref, and have fun. --Bdragon
+    if (function_exists('_gmap_markermanager_override')) {
+      _gmap_markermanager_override($mm, $mms);
+    }
+    if ($mm == 'clusterer' || $mm == 'clustermarker') {
+      // Needed for access to clusterer marker.
+      drupal_add_js($gmap_path . '/js/icon.js');
+    }
+    if (isset($mms[$mm]['filename'])) {
+      drupal_add_js($gmap_path . '/thirdparty/' . $mms[$mm]['filename']);
+    }
+  */
 
   $ret[$path . '/js/marker.js'] = array('weight' => 2);
   $ret[$path . '/js/highlight.js'] = array('weight' => 2);
@@ -312,9 +312,9 @@ function _gmap_base_js() {
     $ret[$path . '/thirdparty/' . $mms[$mm]['filename']] = array('weight' => 3);
   }
   $ret[$path . '/js/' . $mm . '_marker.js'] = array('weight' => 4);
-/*
-  drupal_add_js(array('gmap_markermanager' => $mms[$mm]), 'setting');
-*/
+  /*
+    drupal_add_js(array('gmap_markermanager' => $mms[$mm]), 'setting');
+  */
 
   $ret[$path . '/js/poly.js'] = array('weight' => 3);
 
@@ -330,26 +330,26 @@ function _gmap_base_js() {
   }
   if ($query['language'] == 'zh-hans') {
     $query['language'] = 'zh-CN';
-    $ret[url(gmap_views_protocol() . '://ditu.google.cn/maps/'.$file, array('query' => $query))] = array(
+    $ret[url(gmap_views_protocol() . '://ditu.google.cn/maps/' . $file, array('query' => $query))] = array(
       'type' => 'external',
       'weight' => 2,
     );
   }
   elseif ($query['language'] == 'zh-hant') {
     $query['language'] = 'zh-TW';
-    $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/'.$file, array('query' => $query))] = array(
+    $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/' . $file, array('query' => $query))] = array(
       'type' => 'external',
       'weight' => 2,
     );
   }
   else {
-    $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/'.$file, array('query' => $query))] = array(
+    $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/' . $file, array('query' => $query))] = array(
       'type' => 'external',
       'weight' => 2,
     );
   }
 
-  $ret['/' . variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
+  $ret[$GLOBALS['base_url'] .'/'. variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
     'type' => 'external',
     'weight' => 2,
   );
@@ -390,7 +390,7 @@ function _gmap_doheader() {
 //  drupal_add_js($gmap_path . '/js/' . $mm . '_marker.js');
   drupal_add_js(array('gmap_markermanager' => $mms[$mm]), 'setting');
 // @@@
-drupal_add_js($gmap_path . '/js/poly.js');
+  drupal_add_js($gmap_path . '/js/poly.js');
 
   global $language;
   $file = 'api/js';
@@ -475,10 +475,10 @@ function gmap_set_location($map, &$form, $fields) {
     '#gmap_settings' => $map,
   );
 
-  $form[$fields['latitude']]['#map']=$id;
+  $form[$fields['latitude']]['#map'] = $id;
   gmap_widget_setup($form[$fields['latitude']], 'locpick_latitude');
 
-  $form[$fields['longitude']]['#map']=$id;
+  $form[$fields['longitude']]['#map'] = $id;
   gmap_widget_setup($form[$fields['longitude']], 'locpick_longitude');
 
   if (isset($fields['address'])) {
@@ -565,8 +565,8 @@ function gmap_filter_info() {
  * Filter process callback for gmap_macro.
  */
 function _gmap_filter_process($text, $filter, $format) {
-  $gmaps = _gmap_prepare($text);   //returns an array of $tables[0] = table macro $table[1]= table html
-  if ($gmaps) {                    // there are table macros in this node
+  $gmaps = _gmap_prepare($text); //returns an array of $tables[0] = table macro $table[1]= table html
+  if ($gmaps) { // there are table macros in this node
     return str_replace($gmaps[0], $gmaps[1], $text);
   }
   else {
@@ -684,12 +684,17 @@ function gmap_element_info() {
           "$path/js/gmap_shapes.js" => array('weight' => 2),
           "$path/js/overlay_edit.js" => array('weight' => 2),
           "$path/js/polylineEdit/src/polylineEdit_packed.js" => array('weight' => 3),
-          "$path/js/polygonEdit/src/polygonEdit_packed.js" => array('weight' =>3),
+          "$path/js/polygonEdit/src/polygonEdit_packed.js" => array('weight' => 3),
         ),
       ),
 //      '#theme' => 'select',
     ),
-    'gmap_style' => array('#input' => TRUE, '#tree' => TRUE, '#gmap_style_type' => 'poly', '#process' => array('process_gmap_style')),
+    'gmap_style' => array(
+      '#input' => TRUE,
+      '#tree' => TRUE,
+      '#gmap_style_type' => 'poly',
+      '#process' => array('process_gmap_style')
+    ),
     'gmap_address' => array(
       '#input' => TRUE,
       '#process' => array('process_gmap_address'),
@@ -701,11 +706,28 @@ function gmap_element_info() {
       '#autocomplete_path' => '',
       '#theme' => 'textfield',
     ),
-    'gmap_latitude' => array('#input' => TRUE, '#gmap_newtype' => 'textfield', '#process' => array('process_gmap_control')),
-    'gmap_longitude' => array('#input' => TRUE, '#gmap_newtype' => 'textfield', '#process' => array('process_gmap_control')),
-    'gmap_latlon' => array('#input' => TRUE, '#gmap_newtype' => 'textfield', '#process' => array('process_gmap_control')),
+    'gmap_latitude' => array(
+      '#input' => TRUE,
+      '#gmap_newtype' => 'textfield',
+      '#process' => array('process_gmap_control')
+    ),
+    'gmap_longitude' => array(
+      '#input' => TRUE,
+      '#gmap_newtype' => 'textfield',
+      '#process' => array('process_gmap_control')
+    ),
+    'gmap_latlon' => array(
+      '#input' => TRUE,
+      '#gmap_newtype' => 'textfield',
+      '#process' => array('process_gmap_control')
+    ),
     'gmap_markerchooser' => array('#input' => TRUE, '#process' => array('process_gmap_markerchooser')),
-    'gmap_dimension' => array('#input' => TRUE, '#gmap_newtype' => 'textfield', '#process' => array('process_gmap_control'), '#element_validate' => array('gmap_dimension_validate')),
+    'gmap_dimension' => array(
+      '#input' => TRUE,
+      '#gmap_newtype' => 'textfield',
+      '#process' => array('process_gmap_control'),
+      '#element_validate' => array('gmap_dimension_validate')
+    ),
   );
 }
 
@@ -944,7 +966,7 @@ function process_gmap_markerchooser($element) {
  */
 function gmap_map_cleanup(&$map) {
   // Google is picky about this one.
-  $map['zoom'] = (int)$map['zoom'];
+  $map['zoom'] = (int) $map['zoom'];
   // Normalize latitude / longitude
   if ($map['latlong']) {
     $map['latlon'] = $map['latlong'];
@@ -962,7 +984,7 @@ function gmap_map_cleanup(&$map) {
       unset($map['extent']);
     }
   }
-    
+
   if (isset($map['latlon']) && (!isset($map['latitude']) || !isset($map['longitude']))) {
     list($map['latitude'], $map['longitude']) = explode(',', $map['latlon']);
   }
@@ -1045,7 +1067,11 @@ function theme_gmap($variables) {
   $style[] = 'width: ' . $map['width'];
   $style[] = 'height: ' . $map['height'];
 
-  $element['#attributes']['class'] = array_merge($element['#attributes']['class'], array('gmap', 'gmap-map', 'gmap-' . $mapid . '-gmap'));
+  $element['#attributes']['class'] = array_merge($element['#attributes']['class'], array(
+    'gmap',
+    'gmap-map',
+    'gmap-' . $mapid . '-gmap'
+  ));
 
   // Some markup parsers (IE) don't handle empty inners well. Use the space to let users know javascript is required.
   // @@@ Bevan sez: Google static maps could be useful here.
@@ -1081,7 +1107,7 @@ function theme_gmap($variables) {
  * @return
  *   None.
  */
-function gmap_widget_setup(&$element, $type, $map=NULL) {
+function gmap_widget_setup(&$element, $type, $map = NULL) {
   if (!$map) {
     if (isset($element['#map'])) {
       $map = $element['#map'];
@@ -1195,7 +1221,7 @@ function gmap_decimal($num) {
   // Trim extra whitespace
   $num = trim($num);
   // Check if we're in an acceptable form.
-  if (preg_match('/^[+\-]?((\d+)|(\d+\.\d*)|(\d*\.\d+))(e[+\-]?\d+)?$/', $num)===1) {
+  if (preg_match('/^[+\-]?((\d+)|(\d+\.\d*)|(\d*\.\d+))(e[+\-]?\d+)?$/', $num) === 1) {
     // Good, we can pass that right along.
     return $num;
   }
@@ -1217,8 +1243,8 @@ function gmap_geocode($address, $tld = 'com') {
   if ($data->code == 200) {
     $r = explode(',', $data->data);
     return array(
-      'status' => (int)$r[0],
-      'accuracy' => (int)$r[1],
+      'status' => (int) $r[0],
+      'accuracy' => (int) $r[1],
       'latitude' => $r[2],
       'longitude' => $r[3],
     );
@@ -1261,7 +1287,7 @@ function gmap_geocode($address, $tld = 'com') {
 function gmap_simple_map($latitude, $longitude, $markername = '', $info = '', $zoom = 'auto', $width = 'default', $height = 'default', $autoshow = FALSE, $map = array()) {
   $settings = array(
     'id' => gmap_get_auto_mapid(),
-    'latitude' => $latitude,   // Center the map
+    'latitude' => $latitude, // Center the map
     'longitude' => $longitude, // on the marker.
   );
   if ($zoom != 'default') {
@@ -1274,12 +1300,14 @@ function gmap_simple_map($latitude, $longitude, $markername = '', $info = '', $z
     $settings['height'] = $height;
   }
 
-  $settings['markers'] = array(array(
-    'latitude' => $latitude,
-    'longitude' => $longitude,
-    'markername' => $markername,
-    'offset' => 0,
-  ));
+  $settings['markers'] = array(
+    array(
+      'latitude' => $latitude,
+      'longitude' => $longitude,
+      'markername' => $markername,
+      'offset' => 0,
+    )
+  );
 
   if (!empty($info)) {
     $settings['markers'][0]['text'] = $info;
@@ -1390,7 +1418,8 @@ function gmap_views_pre_render(&$view) {
   static $gmap_processed;
   // Add js only for gmap style views with ajax and not already processed.
   if (($view->plugin_name != 'gmap' && $view->plugin_name != 'gmapextended')
-    || !$view->use_ajax || $gmap_processed) {
+    || !$view->use_ajax || $gmap_processed
+  ) {
     return;
   }
   // Mark the view as already processed.
@@ -1404,11 +1433,13 @@ function gmap_views_pre_render(&$view) {
  */
 function gmap_views_ajax_data_alter(&$commands, $view) {
   // Add js callback only with gmap style plugins and with ajax.
-  $plugin_styles = array ($view->plugin_name);
-  foreach ($view->display as $display)
+  $plugin_styles = array($view->plugin_name);
+  foreach ($view->display as $display) {
     $plugin_styles[] = $display->display_options['style_plugin'];
-  if (! (in_array ('gmap', $plugin_styles) || in_array ('gmap', $plugin_styles)))
+  }
+  if (!(in_array('gmap', $plugin_styles) || in_array('gmap', $plugin_styles))) {
     return;
+  }
 
   // Find the JQuery selector for the view's wrapper in the DOM
   $target = '';
@@ -1433,14 +1464,14 @@ function theme_gmap_views_ui_gmapextended($variables) {
     t('Field'),
     t('Purpose'),
     t('Separator'),
-/*    array(
-      'data' => t('Sortable'),
-      'align' => 'center',
-    ),
-    array(
-      'data' => t('Default sort'),
-      'align' => 'center',
-    ),*/
+    /*    array(
+          'data' => t('Sortable'),
+          'align' => 'center',
+        ),
+        array(
+          'data' => t('Default sort'),
+          'align' => 'center',
+        ),*/
   );
   $rows = array();
   foreach (element_children($form['field_purposes']) as $id) {
