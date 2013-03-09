@@ -362,9 +362,9 @@ class GmapViewsTestCase extends DrupalWebTestCase {
   }
 
   public function setUp() {
+    protected $profile = 'testing';
 
-    parent::setUp(
-      'location',
+    parent::setUp('location',
       'gmap',
       'location_cck',
       'field_ui',
@@ -374,8 +374,20 @@ class GmapViewsTestCase extends DrupalWebTestCase {
       'views',
       'geofield',
       'features',
-      'geophp'
-    );
+      'geophp');
+    $modules = array('location',
+      'gmap',
+      'location_cck',
+      'field_ui',
+      'location_gmap_find_address',
+      'gmap_test',
+      'views_ui',
+      'views',
+      'geofield',
+      'features',
+      'geophp');
+    module_enable($modules);
+    features_rebuild();
     drupal_load('module', 'geophp');
     drupal_load('module', 'features');
     drupal_load('module', 'geofield');
