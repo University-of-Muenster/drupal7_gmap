@@ -4,6 +4,7 @@ core = 7.x
 package = Features
 version = 7.x-1.0-20130309
 project = gmap_test
+hidden = TRUE
 dependencies[] = addressfield
 dependencies[] = ctools
 dependencies[] = entityreference
