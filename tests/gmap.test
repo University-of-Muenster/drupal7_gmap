@@ -376,16 +376,16 @@ class GmapViewsTestCase extends DrupalWebTestCase {
       'features',
       'geophp'
     );
-    drupal_load('geophp');
-    drupal_load('features');
-    drupal_load('geofield');
-    drupal_load('views');
-    drupal_load('gmap_test');
-    drupal_load('location_gmap_find_address');
-    drupal_load('field_ui');
-    drupal_load('location_cck');
-    drupal_load('gmap');
-    drupal_load('location');
+    drupal_load('module', 'geophp');
+    drupal_load('module', 'features');
+    drupal_load('module', 'geofield');
+    drupal_load('module', 'views');
+    drupal_load('module', 'gmap_test');
+    drupal_load('module', 'location_gmap_find_address');
+    drupal_load('module', 'field_ui');
+    drupal_load('module', 'location_cck');
+    drupal_load('module', 'gmap');
+    drupal_load('module', 'location');
   }
 
   //@todo remove this after http://drupal.org/node/1252310#comment-7109128 fix
