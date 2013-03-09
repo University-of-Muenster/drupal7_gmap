@@ -371,6 +371,7 @@ class GmapViewsTestCase extends DrupalWebTestCase {
       'location_gmap_find_address',
       'gmap_test',
       'views_ui',
+      'views',
       'geofield',
       'features',
       'geophp'
