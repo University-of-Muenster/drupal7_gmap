@@ -16,7 +16,25 @@ class GmapViewsTestCase extends DrupalWebTestCase {
   }
 
   public function setUp() {
-    parent::setUp('gmap', 'gmap_test', 'views', 'views_ui', 'text', 'options', 'node', 'geofield', 'field_sql_storage', 'features', 'entityreference', 'ctools', 'addressfield', 'location', 'location_cck', 'geophp','entity');
+    parent::setUp(array(
+      'gmap',
+      'gmap_test',
+      'views',
+      'views_ui',
+      'text',
+      'options',
+      'node',
+      'geofield',
+      'field_sql_storage',
+      'features',
+      'entityreference',
+      'ctools',
+      'addressfield',
+      'location',
+      'location_cck',
+      'geophp',
+      'entity'
+    ));
   }
 
   //@todo remove this after http://drupal.org/node/1252310#comment-7109128 fix
