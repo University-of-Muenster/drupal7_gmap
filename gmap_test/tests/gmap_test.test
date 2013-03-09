@@ -16,40 +16,8 @@ class GmapViewsTestCase extends DrupalWebTestCase {
   }
 
   public function setUp() {
-    parent::setUp('location',
-      'gmap',
-      'location_cck',
-      'field_ui',
-      'location_gmap_find_address',
-      'gmap_test',
-      'views_ui',
-      'views',
-      'geofield',
-      'features',
-      'geophp');
-    $modules = array('location',
-      'gmap',
-      'location_cck',
-      'field_ui',
-      'location_gmap_find_address',
-      'gmap_test',
-      'views_ui',
-      'views',
-      'geofield',
-      'features',
-      'geophp');
-    module_enable($modules);
+    parent::setUp('gmap', 'gmap_test');
     features_rebuild();
-    drupal_load('module', 'geophp');
-    drupal_load('module', 'features');
-    drupal_load('module', 'geofield');
-    drupal_load('module', 'views');
-    drupal_load('module', 'gmap_test');
-    drupal_load('module', 'location_gmap_find_address');
-    drupal_load('module', 'field_ui');
-    drupal_load('module', 'location_cck');
-    drupal_load('module', 'gmap');
-    drupal_load('module', 'location');
   }
 
   //@todo remove this after http://drupal.org/node/1252310#comment-7109128 fix
