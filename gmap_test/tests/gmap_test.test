@@ -16,7 +16,22 @@ class GmapViewsTestCase extends DrupalWebTestCase {
   }
 
   public function setUp() {
-    parent::setUp('gmap', 'gmap_test');
+    parent::setUp(
+      'gmap',
+      'gmap_test',
+      'views',
+      'views_ui',
+      'text',
+      'options',
+      'node',
+      'geofield',
+      'field_sql_storage',
+      'features',
+      'entityreference',
+      'ctools',
+      'addressfield'
+    );
+
     features_rebuild();
   }
 
@@ -41,9 +56,7 @@ class GmapViewsTestCase extends DrupalWebTestCase {
     $this->drupalLogin($this->privileged_user);
 
     // array for form
-    $edit = array(
-
-    );
+    $edit = array();
 
     // page view
     $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/page', $edit, t('Save'));
