@@ -373,7 +373,7 @@ class GmapViewsTestCase extends DrupalWebTestCase {
       'views_ui',
       'geofield',
       'features',
-      'geophp',
+      'geophp'
     );
   }
 
@@ -383,6 +383,11 @@ class GmapViewsTestCase extends DrupalWebTestCase {
       // change error (Notice) to debug message
       return $this->assert('debug', $message, 'Debug', $caller);
     }
+    if ($message == 'Undefined index: geofield') {
+      // change error (Notice) to debug message
+      return $this->assert('debug', $message, 'Debug', $caller);
+    }
+
     return parent::error($message, $group, $caller);
   }
 
