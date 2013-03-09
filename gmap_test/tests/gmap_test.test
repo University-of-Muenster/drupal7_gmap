@@ -6,6 +6,26 @@
 class GmapViewsTestCase extends DrupalWebTestCase {
 
   protected $privileged_user;
+  protected $profile = 'testing';
+  protected static $modules = array(
+    'gmap',
+    'gmap_test',
+    'views',
+    'views_ui',
+    'text',
+    'options',
+    'node',
+    'geofield',
+    'field_sql_storage',
+    'features',
+    'entityreference',
+    'ctools',
+    'addressfield',
+    'location',
+    'location_cck',
+    'geophp',
+    'entity'
+  );
 
   public static function getInfo() {
     return array(
@@ -16,25 +36,7 @@ class GmapViewsTestCase extends DrupalWebTestCase {
   }
 
   public function setUp() {
-    parent::setUp(array(
-      'gmap',
-      'gmap_test',
-      'views',
-      'views_ui',
-      'text',
-      'options',
-      'node',
-      'geofield',
-      'field_sql_storage',
-      'features',
-      'entityreference',
-      'ctools',
-      'addressfield',
-      'location',
-      'location_cck',
-      'geophp',
-      'entity'
-    ));
+    parent::setUp(self::$modules);
   }
 
   //@todo remove this after http://drupal.org/node/1252310#comment-7109128 fix
