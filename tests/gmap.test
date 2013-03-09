@@ -352,7 +352,8 @@ class LGFATestCase extends DrupalWebTestCase {
 class GmapViewsTestCase extends DrupalWebTestCase {
 
   protected $privileged_user;
-
+  protected $profile = 'testing';
+  
   public static function getInfo() {
     return array(
       'name' => 'GmapViewsTestCase',
@@ -362,8 +363,6 @@ class GmapViewsTestCase extends DrupalWebTestCase {
   }
 
   public function setUp() {
-    protected $profile = 'testing';
-
     parent::setUp('location',
       'gmap',
       'location_cck',
