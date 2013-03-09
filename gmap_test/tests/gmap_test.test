@@ -31,7 +31,10 @@ class GmapViewsTestCase extends DrupalWebTestCase {
       'ctools',
       'addressfield',
       'location',
-      'location_cck'
+      'location_cck',
+      'geophp',
+      'entity'
+
     );
 
     features_rebuild();
