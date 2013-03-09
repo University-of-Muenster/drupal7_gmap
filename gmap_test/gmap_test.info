@@ -26,3 +26,7 @@ features[field][] = node-gmapplace-field_mylongitude
 features[node][] = gmap_person
 features[node][] = gmapplace
 features[views_view][] = gmap_test_places
+files[] = gmap_test.features.field.inc
+files[] = gmap_test.features.inc
+files[] = gmap_test.views_default.inc
+files[] = tests/gmap_test.test
