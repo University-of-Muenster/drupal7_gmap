@@ -363,7 +363,18 @@ class GmapViewsTestCase extends DrupalWebTestCase {
 
   public function setUp() {
 
-    parent::setUp('location', 'gmap', 'location_cck', 'field_ui', 'location_gmap_find_address', 'gmap_test');
+    parent::setUp(
+      'location',
+      'gmap',
+      'location_cck',
+      'field_ui',
+      'location_gmap_find_address',
+      'gmap_test',
+      'views_ui',
+      'geofield',
+      'features',
+      'geophp',
+    );
   }
 
   //@todo remove this after http://drupal.org/node/1252310#comment-7109128 fix
@@ -375,57 +386,98 @@ class GmapViewsTestCase extends DrupalWebTestCase {
     return parent::error($message, $group, $caller);
   }
 
-  public function testGmapSaveConfig() {
+  public function testGmapViews() {
 
     // login with user
-    $this->privileged_user = $this->drupalCreateUser(array(
-      'administer site configuration',
-      'administer content types',
-      'bypass node access',
-    ));
+    $this->privileged_user = $this->drupalCreateUser(array_keys(module_invoke_all('permission')));
     $this->drupalLogin($this->privileged_user);
 
     // array for form
     $edit = array(
-      'location_usegmap' => 1,
-      'location_default_country' => 'ua',
+
     );
 
-    // change location default option
-    $this->drupalPost('admin/config/content/location', $edit, t('Save configuration'));
-    $this->assertText(t('The configuration options have been saved.'));
+    // page view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/page', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/page/style_plugin', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/page/style_options', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/page/field/field_mygeofield_1', $edit, t('Apply'));
 
-    // change gmap API key
-    // array for form
-    $edit2 = array(
-      'gmap_api_key' => 'AIzaSyAe2PAkh_qvTq-3WkXQrVwVwh3Lo9FDvkk',
-    );
+    // table view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/block_table', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_table/field/field_mygeofield_1', $edit, t('Apply'));
 
-    $this->drupalPost('admin/config/services/gmap', $edit2, t('Save configuration'));
-    $this->assertText(t('The configuration options have been saved.'));
+    // block_geofield view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/block_geofield', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_geofield/style_plugin', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_geofield/style_options', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_geofield/field/field_mygeofield_1', $edit, t('Apply'));
 
-    // add location field to Basic page type
-    $edit3 = array(
-      'fields[_add_new_field][label]' => 'Location',
-      'fields[_add_new_field][field_name]' => 'location',
-      'fields[_add_new_field][type]' => 'location',
-      'fields[_add_new_field][widget_type]' => 'location',
-    );
+    // block_location view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/block_location', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_location/style_plugin', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_location/style_options', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_location/field/field_mygeofield_1', $edit, t('Apply'));
 
-    $this->drupalPost('admin/structure/types/manage/page/fields', $edit3, t('Save'));
-    $this->assertText(t('These settings apply to the Location field everywhere it is used. These settings impact the way that data is stored in the database and cannot be changed once data has been created.'));
+    // block_field view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/block_field', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_field/style_plugin', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_field/style_options', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_field/field/field_mygeofield_1', $edit, t('Apply'));
 
-    // admin/structure/types/manage/page/fields/field_location
-    $edit4 = array(
-      'field_location[und][0][country]' => 'ua',
-      'field[settings][gmap_marker]' => 'small red',
-    );
+    // block_2 view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/block_2', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_2/style_plugin', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_2/style_options', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_2/field/field_mygeofield_1', $edit, t('Apply'));
 
-    $this->drupalPost('admin/structure/types/manage/page/fields/field_location', $edit4, t('Save settings'));
-    $this->assertText(t('Saved Location configuration.'));
+    // block_3 view
+    $this->drupalPost('admin/structure/views/view/gmap_test_places/edit/block_3', $edit, t('Save'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_3/style_plugin', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/display/gmap_test_places/block_3/style_options', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/relationship/field_mylocation_target_id', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/field/latitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/field/longitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/field/field_mygeofield', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/field/field_mylatitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/field/field_mylongitude', $edit, t('Apply'));
+    $this->drupalPost('admin/structure/views/nojs/config-item/gmap_test_places/block_3/field/field_mygeofield_1', $edit, t('Apply'));
 
-    // check $form["#after_build"][] = "location_gmap_find_address_after_build";
-    $this->drupalGet('node/add/page');
-    $this->assertText(t('Find Address on Map'));
   }
 }
