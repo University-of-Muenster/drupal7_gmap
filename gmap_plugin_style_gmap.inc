@@ -102,15 +102,13 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       $lon_field = 'gmap_lon';
     }
     else if ($this->options['datasource'] == 'geofield') {
-      $lat_field = 'lat';
-      $lon_field = 'lon';
+      $lat_field = 'field_' . $this->options['geofield']; // "[0]['raw']['lat']";
+      $lon_field = 'field_' . $this->options['geofield']; // "[0]['raw']['lon']";
     }
     // Determine fieldname for latitude and longitude fields.
     else if ($this->options['datasource'] == 'fields') {
-      $lat_field_obj = $this->view->display_handler->get_handler('field', $this->options['latfield']);
-      $lon_field_obj = $this->view->display_handler->get_handler('field', $this->options['lonfield']);
-      $lat_field = $lat_field_obj->field_alias;
-      $lon_field = $lon_field_obj->field_alias;
+      $lat_field = 'field_' . $this->options['latfield']; // "[0]['raw']['value']";
+      $lon_field = 'field_' . $this->options['lonfield']; // "[0]['raw']['value']";
     }
 
     // Determine fieldname for marker field.
@@ -179,23 +177,13 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $lat = (float)$row->{$lat_field};
           $lon = (float)$row->{$lon_field};
         }
-        else if ($this->options['datasource'] == 'geofield') {
-          $geofield_name = 'field_' . $this->options['geofield'];
-          $geofield = isset($row->{$geofield_name}[0]['raw']) ? $row->{$geofield_name}[0]['raw'] : NULL;
-          if ($geofield) {
-            $lat = (float)$geofield[$lat_field];
-            $lon = (float)$geofield[$lon_field];
-          }
+        elseif ($this->options['datasource'] == 'geofield') {
+          $lat = isset($row->{$lat_field}[0]['raw']['lat']) ? (float) $row->{$lat_field}[0]['raw']['lat'] : NULL;
+          $lon = isset($row->{$lon_field}[0]['raw']['lon']) ? (float) $row->{$lon_field}[0]['raw']['lon'] : NULL;
         }
-        else if ($this->options['datasource'] == 'fields') {
-          $custom_field_latname = 'field_' . $lat_field;
-          $custom_field_lonname = 'field_' . $lon_field;
-          $custom_field_lat = isset($row->{$custom_field_latname}[0]['raw']) ? $row->{$custom_field_latname}[0]['raw'] : NULL;
-          $custom_field_lon = isset($row->{$custom_field_lonname}[0]['raw']) ? $row->{$custom_field_lonname}[0]['raw'] : NULL;
-          if ($custom_field_lat && $custom_field_lon) {
-           $lat = (float)$row->{$lat_field};
-           $lon = (float)$row->{$lon_field};
-          }
+        elseif ($this->options['datasource'] == 'fields') {
+          $lat = isset($row->{$lat_field}[0]['raw']['value']) ? (float) $row->{$lat_field}[0]['raw']['value'] : NULL;
+          $lon = isset($row->{$lon_field}[0]['raw']['value']) ? (float) $row->{$lon_field}[0]['raw']['value'] : NULL;
         }
 
         // $row->nid is present in node views, views without node as the base table must include the nid field,
