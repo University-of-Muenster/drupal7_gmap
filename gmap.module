@@ -285,9 +285,10 @@ function _gmap_base_js() {
 }
 
 /**
- * Set up the HTML header for GMap.
- * If you are going to include a custom JS file that extends GMap, you probabaly
- * want to call this first to ensure that the core js files have been added.
+ * @deprecated will be removed in next major release upgrade
+ * @see http://drupal.org/node/1931138#comment-7137394 deprecated patch
+ * @todo change record
+ * @todo remove this in next major release upgrade (7.x-3.x or 8.x-1.x)
  */
 function _gmap_doheader() {
 }
