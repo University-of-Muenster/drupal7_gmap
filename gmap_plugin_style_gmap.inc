@@ -363,7 +363,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       '#description' => t('Select the Geofield source field.'),
       '#type' => 'select',
       '#options' => $field_options,
-      '#default_value' => $this->options['geofield'],
+      '#default_value' => isset($this->options['geofield']) ? $this->options['geofield'] : NULL,
       '#process' => array('ctools_dependent_process'),
       '#dependency' => array('edit-style-options-datasource' => array('geofield')),
     );
