@@ -1136,17 +1136,17 @@ function gmap_decimal($num) {
  * as it could possibly take several seconds for this function to return.
  * See http://www.google.com/apis/maps/documentation/reference.html#GGeoStatusCode
  *  for a description of the possible status codes.
+ * @see http://drupal.org/node/1940474
  */
 function gmap_geocode($address, $tld = 'com') {
-  $key = gmap_get_key();
-  $data = drupal_http_request(gmap_views_protocol() . '://maps.google.' . $tld . '/maps/geo?q=' . urlencode($address) . '&output=csv&key=' . $key);
+  $data = drupal_http_request(gmap_views_protocol() . '://maps.googleapis.' . $tld . '/maps/api/geocode/json?address=' . urlencode($address) . '&sensor=false');
   if ($data->code == 200) {
-    $r = explode(',', $data->data);
+    $data_decoded = json_decode($data->data);
     return array(
-      'status' => (int) $r[0],
-      'accuracy' => (int) $r[1],
-      'latitude' => $r[2],
-      'longitude' => $r[3],
+      'status' => $data_decoded->status,
+      'accuracy' => $data_decoded->results[0]->geometry->location_type,
+      'latitude' => $data_decoded->results[0]->geometry->location->lat,
+      'longitude' => $data_decoded->results[0]->geometry->location->lng,
     );
   }
   // Non 200 is G_GEO_SERVER_ERROR (500).
