@@ -237,44 +237,36 @@ function _gmap_base_js() {
   $ret = array();
   $path = drupal_get_path('module', 'gmap');
 
-  $ret[$path . '/js/gmap.js'] = array('weight' => 1);
-  $ret[$path . '/js/icon.js'] = array('weight' => 2);
-  $ret[$path . '/js/marker.js'] = array('weight' => 2);
-  $ret[$path . '/js/highlight.js'] = array('weight' => 2);
-  $ret[$path . '/js/poly.js'] = array('weight' => 2);
-
   global $language;
-  $file = 'api/js';
+  switch ($language->language) {
+    case 'zh-hans':
+      $langcode = 'zh-CN';
+      break;
+    case 'zh-hant':
+      $langcode = 'zh-TW';
+      break;
+    default:
+      $langcode = $language->language;
+      break;
+  }
   $query = array(
     'v' => variable_get('gmap_api_version', GMAP_API_VERSION),
-    'language' => $language->language,
+    'language' => $langcode,
     'sensor' => 'false',
   );
   if ($key = gmap_get_key()) {
     $query['key'] = $key;
   }
-  if ($query['language'] == 'zh-hans') {
-    $query['language'] = 'zh-CN';
-    // There is no https:// version of this domain, so this can be hard coded.
-    $ret[url('http' . '://ditu.google.cn/maps/' . $file, array('query' => $query))] = array(
-      'type' => 'external',
-      'weight' => 1,
-    );
-  }
-  elseif ($query['language'] == 'zh-hant') {
-    $query['language'] = 'zh-TW';
-    $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/' . $file, array('query' => $query))] = array(
-      'type' => 'external',
-      'weight' => 1,
-    );
-  }
-  else {
-    $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/' . $file, array('query' => $query))] = array(
-      'type' => 'external',
-      'weight' => 1,
-    );
-  }
 
+  $ret[$path . '/js/gmap.js'] = array('weight' => 1);
+  $ret[$path . '/js/icon.js'] = array('weight' => 2);
+  $ret[$path . '/js/marker.js'] = array('weight' => 2);
+  $ret[$path . '/js/highlight.js'] = array('weight' => 2);
+  $ret[$path . '/js/poly.js'] = array('weight' => 2);
+  $ret[url(gmap_views_protocol() . '://maps.googleapis.com/maps/' . 'api/js', array('query' => $query))] = array(
+    'type' => 'external',
+    'weight' => 1,
+  );
   $ret['/' . variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
     'type' => 'external',
     'weight' => 4,
