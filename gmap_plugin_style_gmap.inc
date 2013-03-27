@@ -197,7 +197,9 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           $center_lat = $lat;
         }
 
-        if (!empty($lat) && !empty($lon)) {
+        if ((!empty($lat) && !empty($lon))
+         && ($lat != 0 && $lon != 0)
+         && ($lat != 180 && $lon != 360)) {
           if ($this->options['markers'] == 'nodetype') {
             if (isset($markertypes[$row->gmap_node_type])) {
               $markername = $markertypes[$row->gmap_node_type];
