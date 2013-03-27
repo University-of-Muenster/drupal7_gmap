@@ -1328,7 +1328,9 @@ function gmap_views_ajax_data_alter(&$commands, $view) {
   // Add js callback only with gmap style plugins and with ajax.
   $plugin_styles = array($view->plugin_name);
   foreach ($view->display as $display) {
-    $plugin_styles[] = $display->display_options['style_plugin'];
+    if (isset($display->display_options['style_plugin'])) {
+      $plugin_styles[] = $display->display_options['style_plugin'];
+    }
   }
   if (!(in_array('gmap', $plugin_styles))) {
     return;
