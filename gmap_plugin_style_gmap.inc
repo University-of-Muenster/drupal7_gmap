@@ -123,8 +123,6 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       $rmt_field = $rmt_field_obj->field_alias;
     }
 
-    $markername = isset($this->options['markertype']) ? $this->options['markertype'] : 'drupal';
-
     $markertypes = variable_get('gmap_node_markers', array());
     if ($this->options['markers'] == 'nodetype') {
       $markertypes = variable_get('gmap_node_markers', array());
@@ -143,6 +141,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
     // method if they wish some other way of handling grouping.
     $output = '';
     foreach ($sets as $title => $records) {
+      $markername = isset($this->options['markertype']) ? $this->options['markertype'] : 'drupal';
       $markers = array();
       $offsets = array();
       $center_lat = NULL;
