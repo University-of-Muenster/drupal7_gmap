@@ -218,6 +218,8 @@ function _gmap_parse_macro($instring, $ver = 2) {
       $m['shapes'][] = $s;
     }
     unset($m['polygon']);
+  } elseif (isset($m['polygon']) && !is_array($m['polygon'])) {
+    $value = array($m['polygon']);
   }
 
   // Version 1 -> 2 conversion
