@@ -322,8 +322,8 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       '#title' => t('Macro'),
       '#rows' => 3,
       '#default_value' => $this->options['macro'],
-      '#description' => t( 'Enter a macro. If left unchanged, it takes the default settings from <a href="!link">/admin/config/services/gmap</a>',
-                           array('!link' => '/admin/config/services/gmap') ),
+      '#description' =>  t( 'Enter a macro. If left unchanged, it takes the default settings from <a href="!link">/admin/config/services/gmap</a>',
+                           array('!link' => url('admin/config/services/gmap')) ),
     );
 
     $form['datasource'] = array(
