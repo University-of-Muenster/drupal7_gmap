@@ -210,10 +210,11 @@ Drupal.gmap.addHandler('overlayedit', function (elem) {
               obj._oe.markerseq[m] = obj._oe.markerseq[m] + 1;
               //p = new GMarker(point, {icon: Drupal.gmap.getIcon(m, obj._oe.markerseq[m])});
               //obj.map.addOverlay(p);
+              var icon = Drupal.gmap.getIcon(m);
               var p = new google.maps.Marker({
                 position: point, 
                 map: obj.map,
-                icon: Drupal.gmap.getIcon(m, obj._oe.markerseq[m]).ra
+                icon: (icon ? icon.url : null)
               });
               ctx = {
                 'type' : 'point',
