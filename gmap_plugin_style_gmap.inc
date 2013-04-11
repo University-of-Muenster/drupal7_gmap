@@ -41,6 +41,8 @@ class gmap_plugin_style_gmap extends views_plugin_style {
 
     $options['center_on_proximityarg'] = array('default' => 0);
 
+    $options['animation'] = array('default' => 0);
+
     $options['highlight_nodearg'] = array('default' => 0);
     $options['highlight_nodearg_arg'] = array('default' => '');
     $options['highlight_nodearg_color'] = array('default' => '#FF0000');
@@ -252,6 +254,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
               'title' => $tooltip,
               'highlight' => (!empty($highlight_nid) && !empty($row_nid) && $highlight_nid == $row_nid) ? 1 : 0,
               'highlightcolor' => $this->options['highlight_nodearg_color'],
+              'animation' => $this->options['animation'],
             ),
           );
 
@@ -453,6 +456,14 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       );
     }
 
+    // Use the values from google.maps.Animation. See https://developers.google.com/maps/documentation/javascript/reference
+    $form['animation'] = array(
+      '#type' => 'select',
+      '#options' => array(0 => 'None', 1 => 'Bounce', 2 => 'Drop'),
+      '#title' => t('Animation'),
+      '#default_value' => $this->options['animation'],
+      '#description' => t("Add animation to the markers."),
+    );
     $form['highlight_nodearg'] = array(
       '#type' => 'checkbox',
       '#title' => t('Highlight marker for node argument'),
