@@ -267,7 +267,7 @@ function _gmap_base_js() {
     'type' => 'external',
     'weight' => 1,
   );
-  $ret['/' . variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
+  $ret[base_path() . variable_get('file_public_path', conf_path() . '/files') . '/js/gmap_markers.js'] = array(
     'type' => 'external',
     'weight' => 4,
   );
