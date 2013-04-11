@@ -663,7 +663,8 @@ function _gmap_pre_render_map($element) {
   }
 
   if (isset($mms[$mm]['filename'])) {
-    $element['#attached']['js'][$path . '/thirdparty/js/' . $mms[$mm]['filename']] = array('weight' => 5);
+    $element['#attached']['js'][$path . '/thirdparty/' . $mms[$mm]['filename']] = array('weight' => 5);
+    $element['#attached']['js'][] = array('data' => array('gmap_markermanager' => $mms[$mm]), 'type' => 'setting');
   }
   $element['#attached']['js'][$path . '/js/' . $mm . '_marker.js'] = array('weight' => 5);
 

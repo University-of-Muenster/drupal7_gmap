@@ -313,7 +313,7 @@ if (file_default_scheme() != 'public') {
     'markerMinZoom' => 4,
     'markerMaxZoom' => 0,
   ), $opts['markermanager']);
-  
+
   $opts['markerclusterer'] = array_merge(array(
     'filename' => 'markerclusterer_packed.js',
     'gridSize' => 60,
@@ -440,7 +440,7 @@ if (file_default_scheme() != 'public') {
   $form['gmap_markermanager']['markerclusterer']['filename'] = array(
     '#type' => 'textfield',
     '#title' => t('Filename'),
-    '#description' => t('Name of downloaded file in the thirdparty folder. Default: %default', array('%default' => 'markerclusterer_packed.js')),
+    '#description' => t('Name of downloaded file in the thirdparty folder. Default: %default', array('%default' => 'markerclusterer.js')),
     '#default_value' => $opts['markerclusterer']['filename'],
   );
   $form['gmap_markermanager']['markerclusterer']['gridSize'] = array(
@@ -464,7 +464,7 @@ if (file_default_scheme() != 'public') {
   $form['gmap_markermanager']['markerclusterer']['styles'] = array(
     '#type' => 'textarea',
     '#title' => t('MarkerClusterer styles in JSON. Read description!'),
-    '#description' => t('Hack to get MarkerClusterer styles injected. Should parse with PHP\'s json_decode(), so put object member names in quotes and escape properly (at least slashes need to be escaped by backslash). Example: [{"height":34,"width":20,"opt_anchor":[10,17],"opt_textColor":"white","url":"\/sites\/all\/themes\/mytheme\/images\/icons\/gmap\/cluster.png"}]'),
+    '#description' => t('Hack to get MarkerClusterer styles injected. Should parse with PHP\'s json_decode(), so put object member names in quotes and escape properly (at least slashes need to be escaped by backslash). Example: [{"height":34,"width":20,"opt_anchor":[10,17],"textColor":"white","url":"\/sites\/all\/themes\/mytheme\/images\/icons\/gmap\/cluster.png"}]'),
     '#default_value' => drupal_json_encode($opts['markerclusterer']['styles']),
     '#cols' => 60,
     '#rows' => 5,
