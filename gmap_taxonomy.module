@@ -265,7 +265,7 @@ function gmap_taxonomy_get_instances() {
       $fields = field_info_fields();
       // loop through to get the ones of field type taxonomy_term_reference
       foreach ($fields as $field) {
-        if ($field['type'] == 'taxonomy_term_reference') {
+        if ($field['type'] == 'taxonomy_term_reference' && isset($field['bundles']['node'])) {
           foreach ($field['bundles']['node'] as $node_type) {
             $gmap_taxonomy_fields[$node_type][] = $field['field_name'];
           }
