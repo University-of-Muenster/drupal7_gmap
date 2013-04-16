@@ -237,18 +237,30 @@ function _gmap_base_js() {
   $ret = array();
   $path = drupal_get_path('module', 'gmap');
 
+  // Convert some language codes.
+  // For Google Maps API v3, the drupal language code is not always the same as the google language code.
+  // @see https://developers.google.com/maps/documentation/javascript/basics#Localization
   global $language;
   switch ($language->language) {
-    case 'zh-hans':
+    case 'zh-hans': // 'Chinese, Simplified'
       $langcode = 'zh-CN';
       break;
-    case 'zh-hant':
+    case 'zh-hant': // 'Chinese, Traditional'
       $langcode = 'zh-TW';
       break;
+    case 'he': // Hebrew
+      $langcode = 'iw';
+      break;
+    case 'nb': // 'Norwegian Bokmål', 'Bokmål'
+    case 'nn': // 'Norwegian Nynorsk', 'Nynorsk'
+      $langcode = 'no'; // 'Norwegian'
+      break;
+
     default:
       $langcode = $language->language;
       break;
   }
+
   $query = array(
     'v' => variable_get('gmap_api_version', GMAP_API_VERSION),
     'language' => $langcode,
