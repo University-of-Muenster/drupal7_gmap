@@ -107,6 +107,10 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       $lat_field = 'field_' . $this->options['geofield']; // "[0]['raw']['lat']";
       $lon_field = 'field_' . $this->options['geofield']; // "[0]['raw']['lon']";
     }
+    else if ($this->options['datasource'] == 'geolocation') {
+      $lat_field = 'field_' . $this->options['geolocation']; // "[0]['raw']['lat']";
+      $lon_field = 'field_' . $this->options['geolocation']; // "[0]['raw']['lng']";
+    }
     // Determine fieldname for latitude and longitude fields.
     else if ($this->options['datasource'] == 'fields') {
       $lat_field = 'field_' . $this->options['latfield']; // "[0]['raw']['value']";
@@ -181,6 +185,10 @@ class gmap_plugin_style_gmap extends views_plugin_style {
         elseif ($this->options['datasource'] == 'geofield') {
           $lat = isset($row->{$lat_field}[0]['raw']['lat']) ? (float) $row->{$lat_field}[0]['raw']['lat'] : NULL;
           $lon = isset($row->{$lon_field}[0]['raw']['lon']) ? (float) $row->{$lon_field}[0]['raw']['lon'] : NULL;
+        }
+        elseif ($this->options['datasource'] == 'geolocation') {
+          $lat = isset($row->{$lat_field}[0]['raw']['lat']) ? (float) $row->{$lat_field}[0]['raw']['lat'] : NULL;
+          $lon = isset($row->{$lon_field}[0]['raw']['lng']) ? (float) $row->{$lon_field}[0]['raw']['lng'] : NULL;
         }
         elseif ($this->options['datasource'] == 'fields') {
           $lat = isset($row->{$lat_field}[0]['raw']['value']) ? (float) $row->{$lat_field}[0]['raw']['value'] : NULL;
@@ -335,6 +343,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       '#options' => array(
         'location' => t('Location.module'),
         'geofield' => t('Geofield.module'),
+        'geolocation' => t('Geolocation.module'),
         'fields' => t('Choose latitude and longitude fields'),
       //'geocode' => t('Just-in-time geocoding on field named "address"'),
       ),
@@ -370,6 +379,16 @@ class gmap_plugin_style_gmap extends views_plugin_style {
       '#default_value' => isset($this->options['geofield']) ? $this->options['geofield'] : NULL,
       '#process' => array('ctools_dependent_process'),
       '#dependency' => array('edit-style-options-datasource' => array('geofield')),
+    );
+
+    $form['geolocation'] = array(
+      '#title' => t('Geolocation field'),
+      '#description' => t('Select the Geolocation source field.'),
+      '#type' => 'select',
+      '#options' => $field_options,
+      '#default_value' => isset($this->options['geolocation']) ? $this->options['geolocation'] : NULL,
+      '#process' => array('ctools_dependent_process'),
+      '#dependency' => array('edit-style-options-datasource' => array('geolocation')),
     );
 
     $form['markers'] = array(
