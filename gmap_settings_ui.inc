@@ -474,7 +474,7 @@ if (file_default_scheme() != 'public') {
   $form['gmap_markermanager']['clusterer'] = array(
     '#type' => 'fieldset',
     '#title' => t('Clusterer settings'),
-    '#description' => t('Clusterer is a marker manager written by Jef Poskanzer of acme.com. To use, you must place Clusterer2.js (available <a href="@url">here</a>) into the "thirdparty" folder.', array('@url' => 'http://acme.com/javascript/Clusterer2.js')),
+    '#description' => t('Clusterer is a marker manager written by Jef Poskanzer of acme.com and modified by Etienne Châtaignier for compliance with Google Maps API V3. To use, you must place Clusterer2.js (available <a href="@url">here</a>) into the "thirdparty" folder.', array('@url' => 'https://github.com/melicerte/clusterer')),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
