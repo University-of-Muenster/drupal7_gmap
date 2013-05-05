@@ -26,15 +26,6 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     google.maps.event.addListener(m, 'click', function () {
       obj.change('clickmarker', -1, marker);
     });
-    if (obj.vars.behavior.highlight) {
-      google.maps.event.addListener(m, 'mouseover', function () {
-        var highlightColor = '#' + obj.vars.styles.highlight_color;
-        highlightMarker(obj, marker, 'hoverHighlight', highlightColor);
-      });
-      google.maps.event.addListener(m, 'mouseout', function () {
-        unHighlightMarker(obj, marker, 'hoverHighlight');
-      });
-    }
     if (obj.vars.behavior.extramarkerevents) {
       google.maps.event.addListener(m, 'mouseover', function () {
         obj.change('mouseovermarker', -1, marker);
@@ -54,12 +45,6 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     }
     if (obj.vars.behavior.autozoom) {
       obj.bounds.extend(new google.maps.LatLng(marker.latitude, marker.longitude));
-    }
-    // If the highlight arg option is used in views highlight the marker.
-    if (marker.opts.highlight == 1) {
-      google.maps.event.addListener( obj.mm, 'loaded', function() {
-        highlightMarker(obj, marker, 'viewHighlight', marker.opts.highlightcolor);
-      } );
     }
   });
 
@@ -116,7 +101,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     // Tabbed content
     else if (marker.tabs) {
       var data = "";
-      //tabs in an infowindow is no longer supported in API ver3.  
+      //tabs in an infowindow is no longer supported in API ver3.
       for (var m in marker.tabs) {
         data += marker.tabs[m];
       }
@@ -137,8 +122,8 @@ Drupal.gmap.addHandler('gmap', function (elem) {
         var listener = google.maps.event.addListener(obj.map, "idle", function() {
           if (obj.vars.maxzoom) {
             var maxzoom = parseInt(obj.vars.maxzoom)
-            if (obj.map.getZoom() > maxzoom) obj.map.setZoom(maxzoom); 
-            google.maps.event.removeListener(listener);             
+            if (obj.map.getZoom() > maxzoom) obj.map.setZoom(maxzoom);
+            google.maps.event.removeListener(listener);
           }
         });
       }
