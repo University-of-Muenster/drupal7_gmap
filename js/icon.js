@@ -49,7 +49,7 @@ Drupal.gmap.getIcon = function (setname, sequence) {
     for (var i = 0; i < q.sequence.length; i++) {
       /*
       t = new GIcon();
-      p = Drupal.gmap.iconpath + q.path;
+      p = q.path;
       t.image = p + q.sequence[i].f;
       if (q.shadow.f !== '') {
         t.shadow = p + q.shadow.f;
@@ -59,7 +59,7 @@ Drupal.gmap.getIcon = function (setname, sequence) {
       t.iconAnchor = new GPoint(q.anchorX, q.anchorY);
       t.infoWindowAnchor = new GPoint(q.infoX, q.infoY);
       */
-      p = Drupal.gmap.iconpath + q.path;
+      p = q.path;
       t = new google.maps.MarkerImage(p + q.sequence[i].f,
         new google.maps.Size(q.sequence[i].w, q.sequence[i].h),
         null,

@@ -580,6 +580,12 @@ if (file_default_scheme() != 'public') {
     '#size' => 4,
     '#maxlength' => 4,
   );
+  $form['gmap_marker_custom_dir'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Custom markers path'),
+    '#description' => t('Fill in your custom markers folder (absolute path).'),
+    '#default_value' => variable_get('gmap_marker_custom_dir', 'no value'),
+  );
 
   // @@@ Convert to element level validation.
   $form['#validate'][] = 'gmap_admin_settings_validate';
