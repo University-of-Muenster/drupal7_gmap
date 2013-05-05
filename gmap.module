@@ -113,6 +113,8 @@ function gmap_gmap($op, &$map) {
       break;
     case 'macro_multiple':
       return array('points', 'markers', 'feed', 'circle', 'rpolygon', 'polygon', 'line', 'style');
+    case 'libraries':
+      return array( 'geometry' );
     case 'behaviors':
       return array(
         'locpick' => array(
@@ -261,10 +263,12 @@ function _gmap_base_js() {
       break;
   }
 
+  $m = array();
   $query = array(
     'v' => variable_get('gmap_api_version', GMAP_API_VERSION),
     'language' => $langcode,
     'sensor' => 'false',
+    'libraries' => implode(array_merge((array)variable_get('gmap_api_libraries',array()),gmap_module_invoke('libraries', $m)),','),
   );
   if ($key = gmap_get_key()) {
     $query['key'] = $key;
