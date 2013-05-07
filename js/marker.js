@@ -9,7 +9,7 @@
 Drupal.gmap.addHandler('gmap', function (elem) {
   var obj = this;
 
-  var infowindow = null;
+  var infowindow = new google.maps.InfoWindow();
 
   obj.bind('init', function () {
     if (obj.vars.behavior.autozoom) {
@@ -66,7 +66,6 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     if (infowindow != null){
       infowindow.close();
     }
-    infowindow = new google.maps.InfoWindow();
     if (marker.text) {
       infowindow.setContent(marker.text);
       infowindow.open(obj.map, marker.marker);
@@ -159,6 +158,10 @@ Drupal.gmap.addHandler('gmap', function (elem) {
       obj.bounds = new google.maps.LatLngBounds();
     }
   });
+
+  Drupal.gmap.getInfoWindow = function() {
+    return infowindow;
+  };
 
   // @@@ TODO: Some sort of bounds handling for deletemarker? We'd have to walk the whole thing to figure out the new bounds...
 });
