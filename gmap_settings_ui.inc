@@ -36,8 +36,8 @@ function gmap_admin_settings($form, &$form_state) {
   $form['initialization']['gmap_api_key']['#title'] = t('Google Maps API Key');
   $form['initialization']['gmap_api_key']['#description'] = t('This key is currently not required by Google.  Entering a Key will allow you to track map usage in Google.  If you want to use an API key, you can get one at <a href="http://code.google.com/apis/maps/signup.html">Google Map API website</a>.');
 
-if (file_default_scheme() != 'public') {
-  $form['initialization']['gmap_private_markerfile'] = array(
+  if (file_default_scheme() != 'public') {
+    $form['initialization']['gmap_private_markerfile'] = array(
       '#type' => 'textfield',
       '#title' => t('Path to gmap_markers.js'),
       '#description' => t('You are using the <em>Private</em> download method. For markers to work properly. you must press the <em>Regenerate</em> button, manually copy js/gmap_markers.js from the files directory to a location accessible by the webserver, and enter the file path relative to the Drupal root (including the filename) in this field. Example: <em>sites/default/misc/gmap_markers.js</em>'),
@@ -211,7 +211,6 @@ if (file_default_scheme() != 'public') {
         '#type' => 'checkbox',
         '#title' => $layer['title'],
         '#parents' => array('gmap_default', 'baselayers', $key),
-
         '#description' => $layer['help'],
         '#default_value' => isset($defaults['baselayers'][$key]) ? $defaults['baselayers'][$key] : $layer['default'],
       );
@@ -293,8 +292,7 @@ if (file_default_scheme() != 'public') {
     $opts['clustermarker'] = array();
   }
 
-  $opts['gmap'] = array_merge(array(
-    // None.
+  $opts['gmap'] = array_merge(array(// None.
   ), $opts['gmap']);
 
   $opts['gmarkermanager'] = array_merge(array(
@@ -625,10 +623,10 @@ function gmap_admin_settings_validate($form, &$form_state) {
  */
 function gmap_admin_settings_markerclusterer_submit($form, &$form_state) {
   /**
-  * Convert UI JSON text input into nested data structure.
-  * In that way, it is ready to be stored as serialized data and to be output
-  * with drupal_add_js().
-  */
+   * Convert UI JSON text input into nested data structure.
+   * In that way, it is ready to be stored as serialized data and to be output
+   * with drupal_add_js().
+   */
   // for convenience: empty input means empty array
   if ('' == $form_state['values']['gmap_markermanager']['markerclusterer']['styles']) {
     $styles_data = array();
