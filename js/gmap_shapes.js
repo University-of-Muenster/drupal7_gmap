@@ -14,42 +14,48 @@
  */
 
 /*global $, Drupal, google.maps, !google.maps.geometry! */
+(function($) {
 
 Drupal.gmap.addHandler('gmap', function (elem) {
   var obj = this;
 
   // prepare and build a google.maps shape object
   obj.bind('prepareshape', function (shape) {
-    var pa, cargs, style fillstyle;
-    fillstyle = false; // does this shape have a fill option?
-    cargs = {};
-    pa = []; // point array (array of LatLng-objects)
+    var style;
+    var fillstyle = false; // does this shape have a fill option?
+    var cargs = {};
+    var pa = []; // point array (array of LatLng-objects)
 
     // positioning determination
     switch (shape.type) {
       case 'circle':
-        if ( typeof shape.center === 'array') { shape.center = new google.maps.LatLng(shape.center[0], shape.center[1]); } // otherwise it should be a LatLng already
-        if ( shape.point2 ) {
-          if ( typeof shape.point2 === 'array') { shape.point2 = new google.maps.LatLng(shape.point2[0], shape.point2[1]); } // otherwise it should be a LatLng already
+        if ( shape.center.length) { shape.center = new google.maps.LatLng(shape.center[0], shape.center[1]); } // otherwise it should be a LatLng already
+        if ( shape.opts.radius ) {
+          shape.radius = shape.opts.radius;
+        }
+        else if ( shape.point2 ) {
+          if ( shape.point2.length) { shape.point2 = new google.maps.LatLng(shape.point2[0], shape.point2[1]); } // otherwise it should be a LatLng already
           shape.radius = (google.maps.geometry) ? google.maps.geometry.spherical.computeDistanceBetween( shape.center, shape.point2 ) : 250;
         } // if you didn't pass a shape.point2, then you should have passed a shape.radius in meters
         break;
 
       case 'rpolygon': /* this is deprecated as we have circle now.  It is left for backwards compatibility */
-        if ( typeof shape.center === 'array') { shape.center = new google.maps.LatLng(shape.center[0], shape.center[1]); } // otherwise it should be a LatLng already
-        if ( typeof shape.point2 === 'array') { shape.point2 = new google.maps.LatLng(shape.point2[0], shape.point2[1]); } // otherwise it should be a LatLng already
+        if ( shape.center.length ) { shape.center = new google.maps.LatLng(shape.center[0], shape.center[1]); } // otherwise it should be a LatLng already
+        if ( shape.point2.length ) { shape.point2 = new google.maps.LatLng(shape.point2[0], shape.point2[1]); } // otherwise it should be a LatLng already
         shape.radius = (google.maps.geometry) ? google.maps.geometry.spherical.computeDistanceBetween( shape.center, shape.point2 ) : 250;
         if ( !shape.numpoints ) { shape.numpoints = 20; }
-        pa = obj.poly.calcPolyPoints(shape.center, radius, shape.numpoints);
+        pa = obj.poly.calcPolyPoints(shape.center, shape.radius, shape.numpoints);
         break;
 
       case 'polygon':
         fillstyle = true;
       case 'line':
-        $.each(shape.points, function (i, n) {
-          if ( typeof n === 'array') { n = new google.maps.LatLng(n[0], n[1]); } // otherwise it should be a LatLng already
-          pa.push( n );
-        });
+        if ( shape.points ) {
+          $.each( shape.points , function (i, n) {
+            if ( n.length ) { n = new google.maps.LatLng(n[0], n[1]); } // otherwise it should be a LatLng already
+            pa.push( n );
+          });
+        }
         break;
 
       case 'encoded_polygon':
@@ -194,3 +200,5 @@ Drupal.gmap.addHandler('gmap', function (elem) {
     }
   });
 });
+
+})(jQuery);
