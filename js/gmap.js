@@ -384,8 +384,9 @@ Drupal.gmap.addHandler('gmap', function (elem) {
             // hence it being a behavior.
             setTimeout(function () {
                 var r = function () {
-                    google.maps.event.trigger(map);
-                    map.setCenter(new google.maps.LatLng(obj.vars.latitude, obj.vars.longitude), obj.vars.zoom);
+                  var coord = map.getCenter();
+                  google.maps.event.trigger(map, "resize");
+                  map.setCenter(new google.maps.LatLng(coord.lat(), coord.lng()), obj.vars.zoom);
                 };
                 jQuery(elem).parents('fieldset.collapsible').children('legend').children('a').click(r);
                 jQuery('.vertical-tab-button', jQuery(elem).parents('.vertical-tabs')).children('a').click(r);
