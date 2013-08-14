@@ -31,6 +31,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
     $options['latfield'] = array('default' => '');
     $options['lonfield'] = array('default' => '');
     $options['markerfield'] = array('default' => '');
+    $options['geofield'] = array('default' => '');
 
     $options['enablermt'] = array('default' => FALSE);
     $options['rmtfield'] = array('default' => '');
