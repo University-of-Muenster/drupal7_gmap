@@ -199,6 +199,12 @@ class gmap_plugin_style_gmap extends views_plugin_style {
         elseif ($this->options['datasource'] == 'fields') {
           $lat = isset($row->{$lat_field}[0]['raw']['value']) ? (float) $row->{$lat_field}[0]['raw']['value'] : NULL;
           $lon = isset($row->{$lon_field}[0]['raw']['value']) ? (float) $row->{$lon_field}[0]['raw']['value'] : NULL;
+
+          // Field is Location CCK
+          if (!$lat || !$lon) {
+            $lat = isset($row->{$lat_field}[0]['raw']['latitude']) ? $row->{$lat_field}[0]['raw']['latitude'] : NULL;
+            $lon = isset($row->{$lon_field}[0]['raw']['longitude']) ? $row->{$lon_field}[0]['raw']['longitude'] : NULL;
+          }
         }
 
         // $row->nid is present in node views, views without node as the base table must include the nid field,
@@ -237,7 +243,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
           }
           elseif ($this->options['markers'] == 'field') {
 
-            if (!empty($row->{$marker_field})) {
+            if (!empty($row->{$marker_field}) && !empty($row->{$marker_field}[0]['raw']['value'])) {
               $markername = $row->{$marker_field}[0]['raw']['value'];
             }
           }
