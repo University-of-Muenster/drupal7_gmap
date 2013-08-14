@@ -9,12 +9,8 @@
     Drupal.gmap.addHandler('gmap', function (elem) {
         var obj = this;
 
-        var binding = obj.bind("locpickchange", function (position) {
-            if (position && position.lat) { // you passed a valid position
-                obj.locpick_coord = position;
-                obj.locpick_invalid = false;
-            }
-            obj.locpick_invalid = !(obj.locpick_coord && obj.locpick_coord.lat);// has a proper coord has been set since we last checked
+        var binding = obj.bind("locpickchange", function () {
+            obj.locpick_invalid = !(obj.locpick_coord && obj.locpick_coord.jb && obj.locpick_coord.kb);// has a proper coord has been set since we last checked
             if (obj.locpick_invalid) {
                 return; // invalid coord
             }
