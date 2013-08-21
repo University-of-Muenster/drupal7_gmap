@@ -92,6 +92,7 @@ Drupal.gmap.addHandler('gmap', function (elem) {
             //  marker.marker.openInfoWindowHtml(Drupal.settings.loadingImage);
             //}
             jQuery.get(uri, {}, function (data) {
+                opts = {maxWidth : 300}; //### Anpassungen durch PS
                 infowindow.setContent(data);
                 infowindow.open(obj.map, marker.marker);
             });

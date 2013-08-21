@@ -990,8 +990,17 @@ function theme_gmap($variables) {
   }
 
   $style = array();
-  $style[] = 'width: ' . $map['width'];
-  $style[] = 'height: ' . $map['height'];
+  //### Fallunterscheidung Gmaps
+  if(arg(0) == "home"){
+    $style[] = 'width: 450px';
+    $style[] = 'height: 450px';
+    $style[] = 'float: right';
+  }
+  else{
+    $style[] = 'width: ' . $map['width'];
+    $style[] = 'height: ' . $map['height'];
+  }
+  //### Ende
 
   $element['#attributes']['class'] = array_merge($element['#attributes']['class'], array(
     'gmap',

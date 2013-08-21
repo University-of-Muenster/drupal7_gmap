@@ -33,12 +33,18 @@ Drupal.gmap.addHandler('gmap', function (elem) {
 
     obj.bind('addmarker', function (marker) {
         var t = '';
-        if (marker.opts.title) {
+//##################################################
+        /* if (marker.opts.title) {
             t = marker.opts.title;
             if (marker.link) {
                 t = '<a href="' + marker.link + '">' + t + '</a>';
             }
+        } */
+        //### YRP - Neu: YRP-Array anstatt titel übergeben
+        if (marker.yrp) {
+          t = marker.yrp;
         }
+//##################################################
         obj.clusterer.AddMarker(marker.marker, t);
     });
 

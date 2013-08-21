@@ -112,6 +112,23 @@
                 else {
                     // Element with wrong class?
                 }
+                
+                //###Check, if we are on large ggoglemap-site or on homepage with the small googlemap
+                //##################################
+                var pathArray = location.href.split("/");
+                var site = pathArray[pathArray.length - 1];
+	  
+                if(site.search(/googlemap/) == -1){
+                  jQuery(this)
+                    .css('height', '380px')
+                    .css('width', '380px')
+                }
+                else if (settings){
+                  jQuery(this)
+                    .css('height', settings.height)
+                    .css('width', settings.height)
+                  }
+                //##################################
             }
         }
     };
@@ -125,8 +142,6 @@
             settings.id = mapid;
             jQuery(this)
                 .attr('id', 'gmap-' + mapid + '-gmap0')
-                .css('width', settings.width)
-                .css('height', settings.height)
                 .addClass('gmap-control')
                 .addClass('gmap-gmap')
                 .addClass('gmap')

@@ -34,6 +34,7 @@
 /* Clean up unwanted styling for google toolbar */
 .gmap-map .gmnoprint table {
     margin: 0;
+    border:none;
 }
 
 .gmap-map .gmnoprint tbody {
@@ -69,3 +70,37 @@
     max-width: none !important;
 }
 
+/* #####################
+YRP Custom Styles
+######################## */
+div.gmap-popup{
+	width: 300px;
+}
+
+div.gmnoprint{
+	width:300px !important;
+}
+
+.gmap-map ul{
+	margin-bottom: 2px;
+	margin-left:5px;
+}
+
+.gmap-map li{
+	height: 20px;
+	
+}
+
+.gmap-map .gmnoprint table tr {
+	background:#FFFFFF;
+}
+
+.gmap-map .gmnoprint table td {	
+	border:none;
+}
+
+.gmap-map a, .gmap-map{
+	float:left;
+	font-size: 12px;
+	width:100%;
+}

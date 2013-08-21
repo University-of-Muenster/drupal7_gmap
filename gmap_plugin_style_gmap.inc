@@ -146,6 +146,20 @@ class gmap_plugin_style_gmap extends views_plugin_style {
     // Group the rows according to the grouping field, if specified.
     $sets = $this->render_grouping($this->view->result, $this->options['grouping']);
 
+//##################################################
+    /*### YRP - Neu: Feldname + Titel 
+     * $entry_title: Feldtitel (Viewsintern)
+     * label: Feldtitel
+     * exclude: Feld ausgenommen
+     */ 
+    foreach ($this->view->display[$this->view->current_display]->handler->handlers['field'] as $entry_title => $entry_array) {
+      $yrp_titles[$entry_title]=  array(
+        'label' => $entry_array->options['label'],
+        'exclude' => $entry_array->options['exclude'],
+      );
+    }
+//##################################################
+    
     // Let's make sure the individual fields are rendered
     $this->render_fields($this->view->result);
 
@@ -263,7 +277,7 @@ class gmap_plugin_style_gmap extends views_plugin_style {
             'longitude' => $lon,
             'markername' => $markername,
             'offset' => $offsets[$markername],
-            'text' => $bubbletext,
+            'text' => $this->row_plugin->render($row),
             'autoclick' => (!empty($autoclick_nid) && !empty($row_nid) && $autoclick_nid == $row_nid) ? 1 : 0,
             'opts' => array(
               'title' => $tooltip,
@@ -271,6 +285,16 @@ class gmap_plugin_style_gmap extends views_plugin_style {
               'highlightcolor' => $this->options['highlight_nodearg_color'],
               'animation' => $this->options['animation'],
             ),
+            //##################################################
+            /*### YRP - Neu: Zusätzliche Daten
+            * data: gerenderte Daten aus views
+            * fieldtitles: Feldname + Titel (siehe Zeile 124
+            */
+          	'yrp' => array(	
+          		'data' => $this->view->style_plugin->rendered_fields[$row_index],
+          		'fieldtitles' => $yrp_titles,
+          		),
+            //##################################################            
           );
 
           // RMT mode.
