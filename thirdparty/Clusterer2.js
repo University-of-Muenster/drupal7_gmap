@@ -1,3 +1,19 @@
+/**
+ * Überprüft ob ein String in einem Array vorhanden ist
+ * 
+ * @param arr - Array
+ * @param str - String
+ * @return BOOLEAN
+ */
+function mycontains(arr, str){
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] == str) {
+			return true;
+		}
+	}
+	return false;
+}
+
 // Clusterer2.js - marker clustering routines for Google Maps apps
 //
 // Etienne Châtaignier <etienne.chataignier@gmail.com> has coded the following features :
@@ -57,12 +73,17 @@ Clusterer = function(map){
 };
 
 
-Clusterer.defaultMaxVisibleMarkers = 150;
-Clusterer.defaultGridSize = 5;
-Clusterer.defaultMinMarkersPerCluster = 5;
+Clusterer.defaultMaxVisibleMarkers = 1; // Immediately start clustering
+Clusterer.defaultGridSize = 5; // Not used anymore
+Clusterer.defaultMinMarkersPerCluster = 1; // Also cluster for just one marker
 Clusterer.defaultMaxLinesPerInfoBox = 10;
 
-Clusterer.defaultIcon = 'http://acme.com/resources/images/markers/blue_large.PNG';
+Clusterer.defaultIcon = new google.maps.MarkerImage(
+  Drupal.settings.basePath+'sites/all/modules/gmap/thirdparty/img/blue_large.PNG');
+
+//### YRP - Neu:
+Clusterer.maxCluster = 1;
+Clusterer.maxIconSize = 30;
 
 // Call this to change the cluster icon.
 Clusterer.prototype.SetIcon = function(icon){
@@ -89,12 +110,13 @@ Clusterer.prototype.SetMaxLinesPerInfoBox = function(n){
 
 
 // Call this to add a marker.
-Clusterer.prototype.AddMarker = function(marker, title){
+Clusterer.prototype.AddMarker = function(marker, yrp){
     if (marker.setMap != null)
         marker.setMap(this.map);
     marker.map = this.map;
 
-    marker.title = title;
+    marker.yrp = yrp;
+    marker.title = yrp;
     marker.onMap = false;
     this.markers.push(marker);
     this.DisplayLater();
@@ -231,66 +253,82 @@ Clusterer.Display = function(clusterer){
     // clusters instead of replacing them with new ones, so that the app pans
     // better.  And three, of course, be CPU and memory efficient.
     if (visibleMarkers.length > clusterer.maxVisibleMarkers){
-        // Add to the list of clusters by splitting up the current bounds
-        // into a grid.
-        var latRange = bounds.getNorthEast().lat() - bounds.getSouthWest().lat();
-        var latInc = latRange / clusterer.gridSize;
-        var lngInc = latInc / Math.cos((bounds.getNorthEast().lat() + bounds.getSouthWest().lat()) / 2.0 * Math.PI / 180.0);
-        for (var lat = bounds.getSouthWest().lat(); lat <= bounds.getNorthEast().lat(); lat += latInc)
-            for (var lng = bounds.getSouthWest().lng(); lng <= bounds.getNorthEast().lng(); lng += lngInc){
-                cluster = new Object();
-                cluster.clusterer = clusterer;
-                cluster.bounds = new google.maps.LatLngBounds(new google.maps.LatLng(lat, lng), new google.maps.LatLng(lat + latInc, lng + lngInc));
-                cluster.markers = [];
-                cluster.markerCount = 0;
-                cluster.onMap = false;
-                cluster.marker = null;
-                clusterer.clusters.push(cluster);
-            }
-
         // Put all the unclustered visible markers into a cluster - the first
         // one it fits in, which favors pre-existing clusters.
         for (i = 0; i < visibleMarkers.length; ++i){
             marker = visibleMarkers[i];
             if (marker != null && !marker.inCluster){
+                //Check if there is already a cluster the marker fits in (cluster has the same position)
                 for (j = 0; j < clusterer.clusters.length; ++j){
                     cluster = clusterer.clusters[j];
                     if (cluster != null && cluster.bounds.contains(marker.getPosition())){
+                    //if (cluster != null && (cluster.LatLng.equals( marker.getPosition()))) {
                         cluster.markers.push(marker);
                         ++cluster.markerCount;
+                        if (Clusterer.maxCluster<cluster.markerCount){
+                          ++Clusterer.maxCluster;
+                        }
                         marker.inCluster = true;
                     }
+                }
+                
+                // If no suitable cluster found: create new cluster
+                if(!marker.inCluster) {
+                  cluster = new Object();
+                  cluster.clusterer = clusterer;
+                  cluster.bounds = new google.maps.LatLngBounds(marker.getPosition(), marker.getPosition());
+                  cluster.markers = [];
+                  cluster.markerCount = 0;
+                  cluster.onMap = false;
+                  cluster.marker = null;
+                  
+                  cluster.markers.push(marker);
+                  ++cluster.markerCount;
+                  if (Clusterer.maxCluster<cluster.markerCount){
+                    ++Clusterer.maxCluster;
+                  }
+                  marker.inCluster = true;
+                  
+                  clusterer.clusters.push(cluster);
                 }
             }
         }
 
-        // Get rid of any clusters containing only a few markers.
-        for (i = 0; i < clusterer.clusters.length; ++i)
-            if (clusterer.clusters[i] != null && clusterer.clusters[i].markerCount < clusterer.minMarkersPerCluster){
-                clusterer.ClearCluster(clusterer.clusters[i]);
-                clusterer.clusters[i] = null;
-            }
-
-        // Shrink the clusters list.
-        for (i = clusterer.clusters.length - 1; i >= 0; --i)
-            if (clusterer.clusters[i] != null)
-                break;
-            else
-                --clusterer.clusters.length;
-
         // Ok, we have our clusters.  Go through the markers in each
         // cluster and remove them from the map if they are currently up.
         for (i = 0; i < clusterer.clusters.length; ++i){
-            cluster = clusterer.clusters[i];
-            if (cluster != null){
-                for (j = 0; j < cluster.markers.length; ++j){
-                    marker = cluster.markers[j];
-                    if (marker != null){
-                        marker.setMap(null);
-                        marker.onMap = false;
+          cluster = clusterer.clusters[i];
+          if (cluster != null){
+              for (j = 0; j < cluster.markers.length; ++j){
+                  marker = cluster.markers[j];
+                  if (marker != null){
+                      marker.setMap(null);
+                      marker.onMap = false;
+                  }
+              }
+              
+            // ### YRP - Neu: Markerdaten auf Cluster mergen
+            cluster.data = new Array(); // enthält die finalen Daten des Clusters mit allen Informationen
+            cluster.fieldtitles = cluster.markers[0].yrp.fieldtitles;
+            // Gerenderte Felder durchgehen
+            for ( var blub in marker.yrp.data ){   
+              // Prüfe ob Feld ausgegeben werden soll
+              if (marker.yrp.fieldtitles[blub].exclude == 0){
+                var yrptemp = new Array(); // Array zum Zwischenspeichern der Werte der einzelnen Felder
+                // Marker für das jeweilige Feld durchiterieren
+                for (var tuff = 0; tuff < cluster.markers.length; ++tuff) {
+                  marker = cluster.markers[tuff];
+                  if (marker != null){
+                    // Wenn Wert noch nicht vorhanden -> hinzufügen
+                    if (!mycontains(yrptemp, marker.yrp.data[blub])){
+                      yrptemp.push(marker.yrp.data[blub]); 
                     }
+                  }
                 }
-            }
+                cluster.data[blub] = yrptemp;
+              } // Ende der if-Abfrage
+            }// Ende der for-Schleife "gerenderte Felder durchgehen"
+          }
         }
 
         // Now make cluster-markers for any clusters that need one.
@@ -308,9 +346,28 @@ Clusterer.Display = function(clusterer){
                     }
                 }
                 var location = new google.maps.LatLng(yTotal / cluster.markerCount, xTotal / cluster.markerCount);
+                
+                // Change icon to dot if not user or single content page is shown
+                if (window.document.URL.indexOf('user') != '-1' || window.document.URL.indexOf('node') != '-1'){
+                  cluster.icon = Clusterer.defaultIcon;
+                }
+                else {
+                  k = Math.ceil(cluster.markers.length / Clusterer.maxCluster * 10);
+                  console.log(k);
+                  iconSize = Clusterer.maxIconSize-(13-k*1.3);
+                  iconCenter = Math.floor(iconSize / 2);
+                  cluster.icon = new google.maps.MarkerImage(
+                    Drupal.settings.basePath+'sites/all/modules/gmap/thirdparty/img/m'+k+'.png', 
+                    null, 
+                    null, 
+                    new google.maps.Point(iconCenter, iconCenter), 
+                    new google.maps.Size(iconSize, iconSize)
+                  );
+                }
+                
                 cluster.marker = new google.maps.Marker({
                     position: location,
-                    icon: clusterer.icon
+                    icon: cluster.icon
                 });
                 google.maps.event.addListener(cluster.marker, 'click', Clusterer.MakeCaller(Clusterer.PopUp, cluster));
             }
@@ -337,24 +394,40 @@ Clusterer.Display = function(clusterer){
     }
 };
 
-
 Clusterer.PopUp = function(cluster){    
     var clusterer = cluster.clusterer;    
     var html = '<table width="300">';
-    var n = 0;
-    for (var i = 0; i < cluster.markers.length; ++i){
-        var marker = cluster.markers[i];
-        if (marker != null){
-            ++n;
-            var icon_marker = marker.getIcon();
-            html += '<tr><td>';
-            html += '<img src="' + icon_marker.url + '" width="' + (icon_marker.size.width / 2) + '" height="' + (icon_marker.size.height / 2) + '">';
-            html += '</td><td>' + marker.title + '</td></tr>';
-            if (n == clusterer.maxLinesPerInfoBox - 1 && cluster.markerCount > clusterer.maxLinesPerInfoBox){
-                html += '<tr><td colspan="2">...and ' + (cluster.markerCount - n) + ' more</td></tr>';
-                break;
-            }
+    
+    var site = location.href;
+    if(site.search('googlemap') > -1){
+      showResRes = 6;
+    }
+    else {
+      showResRes = 1;
+    }
+    
+    for ( var temp in cluster.data ){
+      html += '<tr><td>';
+      // Titel:
+      html += cluster.fieldtitles[temp].label+':';
+      // html += '</td><td>';
+      html += '<ul class="gmapPopUpList">';
+      // Werte
+      var counter = 0;			
+      for ( var temp1 in cluster.data[temp] ){
+        if(counter < showResRes){
+          html += '<li>'+cluster.data[temp][temp1]+'</li>';
+          counter++;
         }
+        else{
+          var titleArr = cluster.data['title'][0].split(">");
+          var link = titleArr[0]+" title=\"Mehr...\"><strong>Mehr...</strong></a>";
+          html += '<li>'+link+'</li>';
+          html += '</ul></td></tr>';
+          break;
+        }
+      }
+      html += '</ul></td></tr>';
     }
     html += '</table>';
     
