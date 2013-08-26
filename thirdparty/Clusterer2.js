@@ -78,8 +78,7 @@ Clusterer.defaultGridSize = 5; // Not used anymore
 Clusterer.defaultMinMarkersPerCluster = 1; // Also cluster for just one marker
 Clusterer.defaultMaxLinesPerInfoBox = 10;
 
-Clusterer.defaultIcon = new google.maps.MarkerImage(
-  Drupal.settings.basePath+'sites/all/modules/gmap/thirdparty/img/blue_large.PNG');
+Clusterer.defaultIcon = new google.maps.MarkerImage('/sites/all/modules/gmap/thirdparty/img/blue_large.PNG');
 
 //### YRP - Neu:
 Clusterer.maxCluster = 1;
@@ -353,7 +352,6 @@ Clusterer.Display = function(clusterer){
                 }
                 else {
                   k = Math.ceil(cluster.markers.length / Clusterer.maxCluster * 10);
-                  console.log(k);
                   iconSize = Clusterer.maxIconSize-(13-k*1.3);
                   iconCenter = Math.floor(iconSize / 2);
                   cluster.icon = new google.maps.MarkerImage(
