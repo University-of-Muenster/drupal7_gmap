@@ -120,8 +120,8 @@
 	  
                 if(site.search(/googlemap/) == -1){
                   jQuery(this)
-                    .css('height', '380px')
-                    .css('width', '380px')
+                    .css('height', '100%')
+                    .css('width', '100%')
                 }
                 else if (settings){
                   jQuery(this)
